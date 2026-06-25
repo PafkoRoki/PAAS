@@ -1,0 +1,54 @@
+.Carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: #fff;
+  padding: 2rem;
+  color: #2d2d2d;
+  margin: auto;
+  border: 1px solid #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 300px;
+  max-width: 1180px;
+  margin-bottom: 2rem;
+}
+
+.slide {
+  text-align: center;
+  width: 80%;
+}
+
+.slide img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.slide h3 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #666;
+}
+
+.nav {
+  background: none;
+  border: none;
+  color: #2d2d2d;
+  font-size: 5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
