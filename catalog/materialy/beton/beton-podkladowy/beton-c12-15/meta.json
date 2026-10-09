@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Beton C12/15",
+    "en": "Concrete C12/15"
+  },
+  "subtitle": {
+    "pl": "Chudy beton",
+    "en": "Lean concrete"
+  },
+  "category": "Beton",
+  "subTags": [
+    "Beton podkładowy"
+  ],
+  "description": {
+    "pl": "Podkłady, fundamenty pod lekkie konstrukcje, elementy niezbrojone.",
+    "en": "Sub-bases, foundations for light structures, unreinforced elements."
+  }
+}

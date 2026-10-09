@@ -1,0 +1,14 @@
+{
+  "title": {
+    "pl": "Kot",
+    "en": "Cat"
+  },
+  "subtitle": {
+    "pl": "Model kota",
+    "en": "Cat model"
+  },
+  "category": "Architektura",
+  "subTags": [
+    "Komponenty"
+  ]
+}
