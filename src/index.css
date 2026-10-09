@@ -1,4 +1,30 @@
+@font-face {
+  font-family: 'TASA Orbiter';
+  src: url('fonts/TASAOrbiter.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Boyrun';
+  src: url('fonts/Boyrun.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pismo Techniczne';
+  src: url('fonts/FL Pismo Techniczne.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('fonts/Helvetica.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica-Bold';
+  src: url('fonts/Helvetica-Bold.ttf') format('truetype');
+}
+
 :root {
+  font-family: 'Helvetica', sans-serif;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #f0f0f0;

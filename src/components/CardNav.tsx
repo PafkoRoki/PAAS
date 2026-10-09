@@ -3,6 +3,31 @@ import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import './CardNav.css';
 
+export interface CardNavLink {
+  label: string;
+  href: string;
+  ariaLabel?: string;
+}
+
+export interface CardNavItem {
+  label: string;
+  bgColor?: string;
+  textColor?: string;
+  links?: CardNavLink[];
+}
+
+interface CardNavProps {
+  logo: string;
+  logoAlt?: string;
+  menuitems?: CardNavItem[];
+  className?: string;
+  ease?: string;
+  baseColor?: string;
+  menuColor?: string;
+  buttonBgColor?: string;
+  buttonTextColor?: string;
+}
+
 const CardNav = ({
   logo,
   logoAlt = 'Logo',
@@ -10,15 +35,13 @@ const CardNav = ({
   className = '',
   ease = 'power3.out',
   baseColor = '#fff',
-  menuColor,
-  buttonBgColor,
-  buttonTextColor
-}) => {
+  menuColor
+}: CardNavProps) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const navRef = useRef(null);
-  const cardsRef = useRef([]);
-  const tlRef = useRef(null);
+  const navRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   const calculateHeight = () => {
     const navEl = navRef.current;
@@ -26,7 +49,7 @@ const CardNav = ({
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (isMobile) {
-      const contentEl = navEl.querySelector('.card-nav-content');
+      const contentEl = navEl.querySelector<HTMLElement>('.card-nav-content');
       if (contentEl) {
         const wasVisible = contentEl.style.visibility;
         const wasPointerEvents = contentEl.style.pointerEvents;
@@ -128,7 +151,7 @@ const CardNav = ({
     }
   };
 
-  const setCardRef = i => el => {
+  const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
   };
 

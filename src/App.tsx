@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ProjectTile from "./components/ProjectTile";
+import Librarys from "./components/Librarys";
+import Materials from "./components/Materials";
 import Hero from "./components/Hero";
 import StaggeredMenu from './components/StaggeredMenu';
 import Footer from "./components/Footer";
@@ -7,26 +8,24 @@ import MetaBalls from './components/MetaBalls';
 import LogoLoop from './components/LogoLoop';
 import Iridescence from './components/Iridescence';
 import Carousel from './components/Carousel';
+import PixelTrail from './components/PixelTrail';
 import './App.css';
 
 function App() {
 
   const menuItems = [
-    { label: 'O MNIE', ariaLabel: 'Go to home page', link: '/APR/#about' },
-    { label: 'PORTFOLIO', ariaLabel: 'Learn about us', link: '/APR/#portfolio' },
-    { label: 'KONTAKT', ariaLabel: 'View our trips', link: '/APR/#contact' },
+    { label: 'HOME', ariaLabel: 'Go to home page', link: '/PAAS/#home' },
+    { label: 'ABOUT', ariaLabel: 'About', link: '/PAAS/#paas' },
+    { label: 'MATERIAŁY', ariaLabel: 'View our materials', link: '/PAAS/#materials' },
+    { label: 'BIBLIOTEKI', ariaLabel: 'View our libraries', link: '/PAAS/#libraries' },
+    { label: 'KONTAKT', ariaLabel: 'View our trips', link: '/PAAS/#contact' },
     { label: "__________"},
-    { label: "509 964 289", ariaLabel: "Call me",  link: "tel:+48509947289" },
-    { label: "534 498 293", ariaLabel: "Call me",  link: "tel:+48534498293" },
-    { label: "Priv. email", ariaLabel: "Email me", link: "mailto:pafko.roki@gmail.com" },
-    { label: "Stud. email", ariaLabel: "Email me", link: "mailto:pawel.rokicki@student.put.poznan.pl" }
   ];
 
   const socialItems = [
     { label: 'Facebook', link: 'https://pl-pl.facebook.com/Pafkoroki' },
     { label: 'Instagram', link: 'https://www.instagram.com/pafkoroki' },
-    { label: 'Strava', link: 'https://www.strava.com/athletes/34214799' },
-    { label: 'GitHub', link: 'https://github.com/RestDayBlamage' }
+    { label: 'GitHub', link: 'https://github.com/pafkoroki' }
   ];
 
   const techLogos = [
@@ -41,9 +40,9 @@ function App() {
   ];
 
 
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleMenu = (index) => {
+  const toggleMenu = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -62,9 +61,9 @@ function App() {
           menuButtonColor="#1F2026"
           openMenuButtonColor="#1F2026"
           changeMenuColorOnOpen={true}
-          colors={["#E8EBF7", "#E8EBF7", "#E8EBF7"]}
-          logoUrl="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/logo 2.svg"
-          accentColor="#8AA0FF"
+          colors={["#f0f0f0", "#f0f0f0", "#176bff"]}
+          logoUrl="https://raw.githubusercontent.com/PafkoRoki/PAAS/main/public/Assets/logo.svg"
+          accentColor="#176bff"
           onMenuOpen={() => console.log('Menu opened')}
           onMenuClose={() => console.log('Menu closed')}
         />
@@ -79,22 +78,51 @@ function App() {
 />
 </div>
 
-<section className="hero-section">
+
+<section className="hero-section" id="home">
       <Hero />
+      
 </section>
 
+<section className="section" id="paas">
+    <h1>O PROJEKCIE</h1>
+<h2>P A A S</h2>
 
-<section className="section" id="portfolio">
+<h3>
+Projekt rozwijający biblioteki i zasoby dla programu Autodesk Revit, dostosowane do polskich standardów projektowania oraz dokumentacji technicznej i budowlanej. Jego celem jest ułatwienie pracy architektów i projektantów poprzez dostarczenie gotowych komponentów zgodnych z krajowymi wymaganiami i dobrymi praktykami.<br/><br/>
+
+Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworzenie dokumentacji projektowej, zachowując zgodność z polskimi normami i standardami rysunku technicznego. Projekt wspiera efektywniejszą pracę w środowisku BIM, ogranicza konieczność ręcznego dostosowywania elementów oraz przyspiesza przygotowanie dokumentacji.
+</h3>
+
+    <img
+        src="https://raw.githubusercontent.com/PafkoRoki/PAAS/main/public/Assets/docs.png"
+    style={{
+        width: "100%",
+        maxWidth: "1200px",
+        height: "auto",
+        display: "block",
+        margin: "0 auto",
+        filter: "drop-shadow(0 5px 5px #2d2d2dcf)",
+    }}
+    />
+</section>
+
+<section className="section" id="libraries">
     <h1>BIBLIOTEKI</h1>
 </section>
-      <ProjectTile />
+      <Librarys />
+
+<section className="section" id="materials">
+    <h1>MATERIAŁY</h1>
+</section>
+      <Materials />
 
 <section className="section" id="about">
-          <h1>O MNIE</h1>
+          <h1>Software & Tools</h1>
           <h3>
-          Nazywam się <span style={{ fontWeight: 700 }}>Paweł</span> i szczególną przyjemność sprawia mi praca w programie <span style={{ fontWeight: 700 }}>Revit</span>.
+          Revit
           </h3>
-          <h2>Software & Tools</h2>
+          <h2>xyz</h2>
 
 
 
@@ -108,8 +136,6 @@ function App() {
             </iframe> 
           </div>*/}
 </section>
-
-<Carousel />
 
     </div>
 

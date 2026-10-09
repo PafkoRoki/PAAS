@@ -361,32 +361,3 @@
     filter: invert(100%);
   }
 }
-
-.sm-back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  background: transparent;
-  background-color: #f0f0f0;
-  color: #1f2026;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: background 0.3s ease, transform 0.2s ease;
-  border: 1px solid #1f2026;
-  z-index: 1000;
-  pointer-events: auto; /* <- konieczne, bo wrapper miał none */
-}
-
-.sm-back-to-top:hover {
-  background: transparent;
-  color: #1f2026;
-  transform: scale(1.1);
-}

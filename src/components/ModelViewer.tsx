@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unknown-property */
-import { Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
+import React, { Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import { Canvas, useFrame, useLoader, useThree, invalidate } from '@react-three/fiber';
 import { OrbitControls, useGLTF, useFBX, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
 import { EffectComposer, Outline } from '@react-three/postprocessing';
 import { OrthographicCamera } from '@react-three/drei';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import * as THREE from 'three';
 
 const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-const deg2rad = d => (d * Math.PI) / 180;
+const deg2rad = (d: number) => (d * Math.PI) / 180;
 const DECIDE = 8;
 const ROTATE_SPEED = 0.005;
 const INERTIA = 0.925;
@@ -18,7 +19,7 @@ const PARALLAX_EASE = 0.12;
 const HOVER_MAG = deg2rad(6);
 const HOVER_EASE = 0.15;
 
-const Loader = ({ placeholderSrc }) => {
+const Loader = ({ placeholderSrc }: { placeholderSrc?: string }) => {
   const { progress, active } = useProgress();
   if (!active && placeholderSrc) return null;
   return (
@@ -32,8 +33,15 @@ const Loader = ({ placeholderSrc }) => {
   );
 };
 
-const DesktopControls = ({ pivot, min, max, zoomEnabled }) => {
-  const ref = useRef(null);
+interface DesktopControlsProps {
+  pivot: THREE.Vector3;
+  min: number;
+  max: number;
+  zoomEnabled: boolean;
+}
+
+const DesktopControls = ({ pivot, min, max, zoomEnabled }: DesktopControlsProps) => {
+  const ref = useRef<OrbitControlsImpl | null>(null);
   useFrame(() => ref.current?.target.copy(pivot));
   return (
     <OrbitControls
@@ -47,6 +55,28 @@ const DesktopControls = ({ pivot, min, max, zoomEnabled }) => {
     />
   );
 };
+
+type EnvironmentPreset = NonNullable<React.ComponentProps<typeof Environment>['preset']>;
+
+interface ModelInnerProps {
+  url: string;
+  xOff: number;
+  yOff: number;
+  pivot: THREE.Vector3;
+  initYaw: number;
+  initPitch: number;
+  minZoom: number;
+  maxZoom: number;
+  enableMouseParallax: boolean;
+  enableManualRotation: boolean;
+  enableHoverRotation: boolean;
+  enableManualZoom: boolean;
+  autoFrame: boolean;
+  fadeIn: boolean;
+  autoRotate: boolean;
+  autoRotateSpeed: number;
+  onLoaded?: () => void;
+}
 
 const ModelInner = ({
   url,
@@ -66,9 +96,9 @@ const ModelInner = ({
   autoRotate,
   autoRotateSpeed,
   onLoaded
-}) => {
-  const outer = useRef(null);
-  const inner = useRef(null);
+}: ModelInnerProps) => {
+  const outer = useRef<THREE.Group>(null!);
+  const inner = useRef<THREE.Group>(null!);
   const { camera, gl } = useThree();
 
   const vel = useRef({ x: 0, y: 0 });
@@ -77,9 +107,9 @@ const ModelInner = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 });
 
-  const ext = useMemo(() => url.split('.').pop().toLowerCase(), [url]);
+  const ext = useMemo(() => (url.split('.').pop() ?? '').toLowerCase(), [url]);
   const content = useMemo(() => {
-    if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
+    if (ext === 'glb' || ext === 'gltf') return (useGLTF(url) as unknown as { scene: THREE.Group }).scene.clone();
     if (ext === 'fbx') return useFBX(url).clone();
     if (ext === 'obj') return useLoader(OBJLoader, url).clone();
     console.error('Unsupported format:', ext);
@@ -97,13 +127,15 @@ const ModelInner = ({
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
 
-    g.traverse(o => {
-      if (o.isMesh) {
-        o.castShadow = true;
-        o.receiveShadow = true;
+    g.traverse((o: THREE.Object3D) => {
+      if ((o as THREE.Mesh).isMesh) {
+        const mesh = o as THREE.Mesh;
+        const material = mesh.material as THREE.Material;
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
         if (fadeIn) {
-          o.material.transparent = true;
-          o.material.opacity = 0;
+          material.transparent = true;
+          material.opacity = 0;
         }
       }
     });
@@ -113,8 +145,8 @@ const ModelInner = ({
     outer.current.rotation.set(initPitch, initYaw, 0);
 
 // Zawsze wyśrodkuj kamerę na modelu
-if (camera.isPerspectiveCamera) {
-  const persp = camera;
+if ((camera as THREE.PerspectiveCamera).isPerspectiveCamera) {
+  const persp = camera as THREE.PerspectiveCamera;
   const fitR = sphere.radius * s;
   const d = (fitR * 1) / Math.sin((persp.fov * Math.PI) / 180 / 2);
 
@@ -132,8 +164,8 @@ if (camera.isPerspectiveCamera) {
       const id = setInterval(() => {
         t += 0.05;
         const v = Math.min(t, 1);
-        g.traverse(o => {
-          if (o.isMesh) o.material.opacity = v;
+        g.traverse((o: THREE.Object3D) => {
+          if ((o as THREE.Mesh).isMesh) ((o as THREE.Mesh).material as THREE.Material).opacity = v;
         });
         invalidate();
         if (v === 1) {
@@ -152,14 +184,14 @@ if (camera.isPerspectiveCamera) {
     let drag = false;
     let lx = 0,
       ly = 0;
-    const down = e => {
+    const down = (e: PointerEvent) => {
       if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
       drag = true;
       lx = e.clientX;
       ly = e.clientY;
       window.addEventListener('pointerup', up);
     };
-    const move = e => {
+    const move = (e: PointerEvent) => {
       if (!drag) return;
       const dx = e.clientX - lx;
       const dy = e.clientY - ly;
@@ -183,7 +215,7 @@ if (camera.isPerspectiveCamera) {
   useEffect(() => {
     if (!isTouch) return;
     const el = gl.domElement;
-    const pts = new Map();
+    const pts = new Map<number, { x: number; y: number }>();
 
     let mode = 'idle';
     let sx = 0,
@@ -193,7 +225,7 @@ if (camera.isPerspectiveCamera) {
       startDist = 0,
       startZ = 0;
 
-    const down = e => {
+    const down = (e: PointerEvent) => {
       if (e.pointerType !== 'touch') return;
       pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (pts.size === 1) {
@@ -210,7 +242,7 @@ if (camera.isPerspectiveCamera) {
       invalidate();
     };
 
-    const move = e => {
+    const move = (e: PointerEvent) => {
       const p = pts.get(e.pointerId);
       if (!p) return;
       p.x = e.clientX;
@@ -250,7 +282,7 @@ if (camera.isPerspectiveCamera) {
       }
     };
 
-    const up = e => {
+    const up = (e: PointerEvent) => {
       pts.delete(e.pointerId);
       if (mode === 'rotate' && pts.size === 0) mode = 'idle';
       if (mode === 'pinch' && pts.size < 2) mode = 'idle';
@@ -271,7 +303,7 @@ if (camera.isPerspectiveCamera) {
 
   useEffect(() => {
     if (isTouch) return;
-    const mm = e => {
+    const mm = (e: PointerEvent) => {
       if (e.pointerType !== 'mouse') return;
       const nx = (e.clientX / window.innerWidth) * 2 - 1;
       const ny = (e.clientY / window.innerHeight) * 2 - 1;
@@ -332,6 +364,35 @@ if (camera.isPerspectiveCamera) {
   );
 };
 
+export interface ModelViewerProps {
+  url: string;
+  width?: number | string;
+  height?: number | string;
+  modelXOffset?: number;
+  modelYOffset?: number;
+  defaultRotationX?: number;
+  defaultRotationY?: number;
+  defaultZoom?: number;
+  minZoomDistance?: number;
+  maxZoomDistance?: number;
+  enableMouseParallax?: boolean;
+  enableManualRotation?: boolean;
+  enableHoverRotation?: boolean;
+  enableManualZoom?: boolean;
+  ambientIntensity?: number;
+  keyLightIntensity?: number;
+  fillLightIntensity?: number;
+  rimLightIntensity?: number;
+  environmentPreset?: EnvironmentPreset | 'none';
+  autoFrame?: boolean;
+  placeholderSrc?: string;
+  showScreenshotButton?: boolean;
+  fadeIn?: boolean;
+  autoRotate?: boolean;
+  autoRotateSpeed?: number;
+  onModelLoaded?: () => void;
+}
+
 const ModelViewer = ({
   url,
   width = '100vw',
@@ -359,13 +420,13 @@ const ModelViewer = ({
   autoRotate = true,
   autoRotateSpeed = 0.1,
   onModelLoaded
-}) => {
+}: ModelViewerProps) => {
   useEffect(() => void useGLTF.preload(url), [url]);
   const pivot = useRef(new THREE.Vector3()).current;
-  const contactRef = useRef(null);
-  const rendererRef = useRef(null);
-  const sceneRef = useRef(null);
-  const cameraRef = useRef(null);
+  const contactRef = useRef<THREE.Group | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const cameraRef = useRef<THREE.Camera | null>(null);
 
   const initYaw = deg2rad(defaultRotationX);
   const initPitch = deg2rad(defaultRotationY);
@@ -377,10 +438,10 @@ const ModelViewer = ({
       c = cameraRef.current;
     if (!g || !s || !c) return;
     g.shadowMap.enabled = false;
-    const tmp = [];
-    s.traverse(o => {
-      if (o.isLight && 'castShadow' in o) {
-        tmp.push({ l: o, cast: o.castShadow });
+    const tmp: { l: THREE.Light; cast: boolean }[] = [];
+    s.traverse((o: THREE.Object3D) => {
+      if ((o as THREE.Light).isLight && 'castShadow' in o) {
+        tmp.push({ l: o as THREE.Light, cast: o.castShadow });
         o.castShadow = false;
       }
     });
@@ -428,7 +489,7 @@ const ModelViewer = ({
           near={0.1}
           far={100}
         />
-        {environmentPreset !== 'none' && <Environment preset={environmentPreset} background={false} />}
+        {environmentPreset !== 'none' && <Environment preset={environmentPreset as EnvironmentPreset} background={false} />}
 
         <ambientLight intensity={ambientIntensity} />
         <directionalLight position={[5, 5, 5]} intensity={keyLightIntensity} castShadow />

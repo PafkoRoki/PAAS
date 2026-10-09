@@ -2,6 +2,35 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 
+export interface StaggeredMenuItem {
+  label: string;
+  ariaLabel?: string;
+  link?: string;
+}
+
+export interface StaggeredMenuSocialItem {
+  label: string;
+  link: string;
+}
+
+export interface StaggeredMenuProps {
+  position?: 'left' | 'right';
+  colors?: string[];
+  items?: StaggeredMenuItem[];
+  socialItems?: StaggeredMenuSocialItem[];
+  displaySocials?: boolean;
+  displayItemNumbering?: boolean;
+  className?: string;
+  logoUrl?: string;
+  menuButtonColor?: string;
+  openMenuButtonColor?: string;
+  accentColor?: string;
+  changeMenuColorOnOpen?: boolean;
+  isFixed?: boolean;
+  onMenuOpen?: () => void;
+  onMenuClose?: () => void;
+}
+
 export const StaggeredMenu = ({
   position = 'right',
   colors = ['#B19EEF', '#5227FF'],
@@ -18,27 +47,27 @@ export const StaggeredMenu = ({
   isFixed = false,
   onMenuOpen,
   onMenuClose
-}) => {
+}: StaggeredMenuProps) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
-  const panelRef = useRef(null);
-  const preLayersRef = useRef(null);
-  const preLayerElsRef = useRef([]);
-  const plusHRef = useRef(null);
-  const plusVRef = useRef(null);
-  const iconRef = useRef(null);
-  const textInnerRef = useRef(null);
-  const textWrapRef = useRef(null);
+  const panelRef = useRef<HTMLElement | null>(null);
+  const preLayersRef = useRef<HTMLDivElement | null>(null);
+  const preLayerElsRef = useRef<HTMLElement[]>([]);
+  const plusHRef = useRef<HTMLSpanElement | null>(null);
+  const plusVRef = useRef<HTMLSpanElement | null>(null);
+  const iconRef = useRef<HTMLSpanElement | null>(null);
+  const textInnerRef = useRef<HTMLSpanElement | null>(null);
+  const textWrapRef = useRef<HTMLSpanElement | null>(null);
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
 
-  const openTlRef = useRef(null);
-  const closeTweenRef = useRef(null);
-  const spinTweenRef = useRef(null);
-  const textCycleAnimRef = useRef(null);
-  const colorTweenRef = useRef(null);
-  const toggleBtnRef = useRef(null);
+  const openTlRef = useRef<gsap.core.Timeline | null>(null);
+  const closeTweenRef = useRef<gsap.core.Tween | null>(null);
+  const spinTweenRef = useRef<gsap.core.Tween | null>(null);
+  const textCycleAnimRef = useRef<gsap.core.Tween | null>(null);
+  const colorTweenRef = useRef<gsap.core.Tween | null>(null);
+  const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
   const busyRef = useRef(false);
-  const itemEntranceTweenRef = useRef(null);
+  const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,9 +79,9 @@ export const StaggeredMenu = ({
       const textInner = textInnerRef.current;
       if (!panel || !plusH || !plusV || !icon || !textInner) return;
 
-      let preLayers = [];
+      let preLayers: HTMLElement[] = [];
       if (preContainer) {
-        preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+        preLayers = Array.from(preContainer.querySelectorAll<HTMLElement>('.sm-prelayer'));
       }
       preLayerElsRef.current = preLayers;
 
@@ -227,7 +256,7 @@ export const StaggeredMenu = ({
     });
   }, [position]);
 
-  const animateIcon = useCallback(opening => {
+  const animateIcon = useCallback((opening: boolean) => {
     const icon = iconRef.current;
     if (!icon) return;
     spinTweenRef.current?.kill();
@@ -239,7 +268,7 @@ export const StaggeredMenu = ({
   }, []);
 
   const animateColor = useCallback(
-    opening => {
+    (opening: boolean) => {
       const btn = toggleBtnRef.current;
       if (!btn) return;
       colorTweenRef.current?.kill();
@@ -269,7 +298,7 @@ export const StaggeredMenu = ({
     }
   }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
 
-  const animateText = useCallback(opening => {
+  const animateText = useCallback((opening: boolean) => {
     const inner = textInnerRef.current;
     if (!inner) return;
     textCycleAnimRef.current?.kill();
@@ -316,7 +345,7 @@ export const StaggeredMenu = ({
   return (
     <div
       className={(className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : '')}
-      style={accentColor ? { ['--sm-accent']: accentColor } : undefined}
+      style={accentColor ? ({ '--sm-accent': accentColor } as React.CSSProperties) : undefined}
       data-position={position}
       data-open={open || undefined}
     >
@@ -373,7 +402,23 @@ export const StaggeredMenu = ({
             {items && items.length ? (
               items.map((it, idx) => (
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
-                  <a className="sm-panel-item" href={it.link} aria-label={it.ariaLabel} data-index={idx + 1}>
+<a
+  className="sm-panel-item"
+  href={it.link}
+  aria-label={it.ariaLabel}
+  data-index={idx + 1}
+  onClick={() => {
+    if (openRef.current) {
+      openRef.current = false;
+      setOpen(false);
+      onMenuClose?.();
+      playClose();
+      animateIcon(false);
+      animateColor(false);
+      animateText(false);
+    }
+  }}
+>
                     <span className="sm-panel-itemLabel">{it.label}</span>
                   </a>
                 </li>
@@ -402,14 +447,6 @@ export const StaggeredMenu = ({
           )}
         </div>
       </aside>
-    <button
-      className="sm-back-to-top"
-      aria-label="Back to top"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    >
-      UP
-    </button>
-
     </div>
 
     

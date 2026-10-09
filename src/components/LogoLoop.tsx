@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
 import './LogoLoop.css';
 
 const ANIMATION_CONFIG = {
@@ -7,9 +7,13 @@ const ANIMATION_CONFIG = {
   COPY_HEADROOM: 2
 };
 
-const toCssLength = value => (typeof value === 'number' ? `${value}px` : (value ?? undefined));
+const toCssLength = (value?: number | string): string | undefined => (typeof value === 'number' ? `${value}px` : (value ?? undefined));
 
-const useResizeObserver = (callback, elements, dependencies) => {
+const useResizeObserver = (
+  callback: () => void,
+  elements: Array<React.RefObject<Element | null>>,
+  dependencies: React.DependencyList
+) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
       const handleResize = () => callback();
@@ -34,7 +38,11 @@ const useResizeObserver = (callback, elements, dependencies) => {
   }, dependencies);
 };
 
-const useImageLoader = (seqRef, onLoad, dependencies) => {
+const useImageLoader = (
+  seqRef: React.RefObject<HTMLUListElement | null>,
+  onLoad: () => void,
+  dependencies: React.DependencyList
+) => {
   useEffect(() => {
     const images = seqRef.current?.querySelectorAll('img') ?? [];
 
@@ -71,9 +79,15 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
   }, dependencies);
 };
 
-const useAnimationLoop = (trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover) => {
-  const rafRef = useRef(null);
-  const lastTimestampRef = useRef(null);
+const useAnimationLoop = (
+  trackRef: React.RefObject<HTMLDivElement | null>,
+  targetVelocity: number,
+  seqWidth: number,
+  isHovered: boolean,
+  pauseOnHover: boolean
+) => {
+  const rafRef = useRef<number | null>(null);
+  const lastTimestampRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const velocityRef = useRef(0);
 
@@ -86,12 +100,12 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, isHovered, pauseOn
       track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
     }
 
-    const animate = timestamp => {
+    const animate = (timestamp: number) => {
       if (lastTimestampRef.current === null) {
         lastTimestampRef.current = timestamp;
       }
 
-      const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
+      const deltaTime = Math.max(0, timestamp - (lastTimestampRef.current ?? timestamp)) / 1000;
       lastTimestampRef.current = timestamp;
 
       const target = pauseOnHover && isHovered ? 0 : targetVelocity;
@@ -123,6 +137,40 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, isHovered, pauseOn
   }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef]);
 };
 
+type LogoItem =
+  | {
+      node: React.ReactNode;
+      href?: string;
+      title?: string;
+      ariaLabel?: string;
+    }
+  | {
+      src: string;
+      alt?: string;
+      href?: string;
+      title?: string;
+      srcSet?: string;
+      sizes?: string;
+      width?: number;
+      height?: number;
+    };
+
+export interface LogoLoopProps {
+  logos: LogoItem[];
+  speed?: number;
+  direction?: 'left' | 'right';
+  width?: number | string;
+  logoHeight?: number;
+  gap?: number;
+  pauseOnHover?: boolean;
+  fadeOut?: boolean;
+  fadeOutColor?: string;
+  scaleOnHover?: boolean;
+  ariaLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 export const LogoLoop = memo(
   ({
     logos,
@@ -138,10 +186,10 @@ export const LogoLoop = memo(
     ariaLabel = 'Partner logos',
     className,
     style
-  }) => {
-    const containerRef = useRef(null);
-    const trackRef = useRef(null);
-    const seqRef = useRef(null);
+  }: LogoLoopProps) => {
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const trackRef = useRef<HTMLDivElement | null>(null);
+    const seqRef = useRef<HTMLUListElement | null>(null);
 
     const [seqWidth, setSeqWidth] = useState(0);
     const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
@@ -196,7 +244,7 @@ export const LogoLoop = memo(
       if (pauseOnHover) setIsHovered(false);
     }, [pauseOnHover]);
 
-    const renderLogoItem = useCallback((item, key) => {
+    const renderLogoItem = useCallback((item: LogoItem, key: React.Key) => {
       const isNodeItem = 'node' in item;
 
       const content = isNodeItem ? (
