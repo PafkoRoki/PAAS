@@ -1,6 +1,12 @@
 {
-  "title": "Wymiar",
-  "subtitle": "Wymiar",
+  "title": {
+    "pl": "Wymiar",
+    "en": "Dimension"
+  },
+  "subtitle": {
+    "pl": "Wymiar",
+    "en": "Dimension"
+  },
   "category": "Opisz",
   "subTags": [
     "Wymiary"

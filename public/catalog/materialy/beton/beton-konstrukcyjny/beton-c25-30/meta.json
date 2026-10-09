@@ -1,9 +1,18 @@
 {
-  "title": "Beton C25/30",
-  "subtitle": "Beton",
+  "title": {
+    "pl": "Beton C25/30",
+    "en": "Concrete C25/30"
+  },
+  "subtitle": {
+    "pl": "Beton",
+    "en": "Concrete"
+  },
   "category": "Beton",
   "subTags": [
     "Beton konstrukcyjny"
   ],
-  "description": "Budynki wielorodzinne i przemysłowe, elementy konstrukcyjne o większych obciążeniach."
+  "description": {
+    "pl": "Budynki wielorodzinne i przemysłowe, elementy konstrukcyjne o większych obciążeniach.",
+    "en": "Multi-family and industrial buildings, structural elements under higher loads."
+  }
 }

@@ -1,6 +1,12 @@
 {
-  "title": "Piasek zagęszczony",
-  "subtitle": "Piasek zagęszczony",
+  "title": {
+    "pl": "Piasek zagęszczony",
+    "en": "Compacted sand"
+  },
+  "subtitle": {
+    "pl": "Piasek zagęszczony",
+    "en": "Compacted sand"
+  },
   "category": "Grunt",
   "subTags": [
     "Piasek"

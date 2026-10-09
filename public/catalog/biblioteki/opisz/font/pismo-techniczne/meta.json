@@ -1,6 +1,12 @@
 {
-  "title": "Pismo Techniczne",
-  "subtitle": "Font FL Pismo Techniczne",
+  "title": {
+    "pl": "Pismo Techniczne",
+    "en": "Technical lettering"
+  },
+  "subtitle": {
+    "pl": "Font FL Pismo Techniczne",
+    "en": "FL Pismo Techniczne font"
+  },
   "category": "Opisz",
   "subTags": [
     "Font"

@@ -1,6 +1,12 @@
 {
-  "title": "Drzwi wewnętrzne",
-  "subtitle": "MB-79N SI Panel Door Single",
+  "title": {
+    "pl": "Drzwi wewnętrzne",
+    "en": "Interior door"
+  },
+  "subtitle": {
+    "pl": "MB-79N SI Panel Door Single",
+    "en": "MB-79N SI Panel Door Single"
+  },
   "category": "Architektura",
   "subTags": [
     "Drzwi"

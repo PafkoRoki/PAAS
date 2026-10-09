@@ -1,6 +1,12 @@
 {
-  "title": "Okno Aluprof Passive",
-  "subtitle": "MB-104 Passive AERO System",
+  "title": {
+    "pl": "Okno Aluprof Passive",
+    "en": "Aluprof Passive window"
+  },
+  "subtitle": {
+    "pl": "MB-104 Passive AERO System",
+    "en": "MB-104 Passive AERO System"
+  },
   "category": "Architektura",
   "subTags": [
     "Okna"

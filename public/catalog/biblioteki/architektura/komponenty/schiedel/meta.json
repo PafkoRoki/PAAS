@@ -1,6 +1,12 @@
 {
-  "title": "Schiedel",
-  "subtitle": "Schiedel 50 x 36",
+  "title": {
+    "pl": "Schiedel",
+    "en": "Schiedel"
+  },
+  "subtitle": {
+    "pl": "Schiedel 50 x 36",
+    "en": "Schiedel 50 x 36"
+  },
   "category": "Architektura",
   "subTags": [
     "Komponenty"

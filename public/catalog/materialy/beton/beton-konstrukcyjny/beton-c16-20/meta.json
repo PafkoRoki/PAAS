@@ -1,9 +1,18 @@
 {
-  "title": "Beton C16/20",
-  "subtitle": "Beton",
+  "title": {
+    "pl": "Beton C16/20",
+    "en": "Concrete C16/20"
+  },
+  "subtitle": {
+    "pl": "Beton",
+    "en": "Concrete"
+  },
   "category": "Beton",
   "subTags": [
     "Beton konstrukcyjny"
   ],
-  "description": "Schody, tarasy, posadzki, lekkie fundamenty, elementy mało obciążone."
+  "description": {
+    "pl": "Schody, tarasy, posadzki, lekkie fundamenty, elementy mało obciążone.",
+    "en": "Stairs, terraces, floor slabs, light foundations, lightly loaded elements."
+  }
 }

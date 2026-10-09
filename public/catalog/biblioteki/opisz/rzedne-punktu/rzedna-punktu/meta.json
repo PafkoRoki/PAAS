@@ -1,6 +1,12 @@
 {
-  "title": "Rzędna punktu",
-  "subtitle": "Rzędna punktu",
+  "title": {
+    "pl": "Rzędna punktu",
+    "en": "Spot elevation"
+  },
+  "subtitle": {
+    "pl": "Rzędna punktu",
+    "en": "Spot elevation"
+  },
   "category": "Opisz",
   "subTags": [
     "Rzędne punktu"

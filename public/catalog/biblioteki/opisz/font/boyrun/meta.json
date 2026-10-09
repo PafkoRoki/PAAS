@@ -1,6 +1,12 @@
 {
-  "title": "Boyrun",
-  "subtitle": "Font Hand Writing",
+  "title": {
+    "pl": "Boyrun",
+    "en": "Boyrun"
+  },
+  "subtitle": {
+    "pl": "Font Hand Writing",
+    "en": "Handwriting font"
+  },
   "category": "Opisz",
   "subTags": [
     "Font"

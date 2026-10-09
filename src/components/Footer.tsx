@@ -1,7 +1,9 @@
 import { assetUrl } from "../catalog";
+import { useLanguage } from "../i18n/useLanguage";
 import "./Footer.css";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -21,10 +23,10 @@ export default function Footer() {
             <h4>C O N T .</h4>
             <ul>
             <li>
-              <a href="tel:+48509964289" aria-label="Call me" className="footer-link">509 000 289</a>
+              <a href="tel:+48509964289" aria-label={t.footer.callAria} className="footer-link">509 000 289</a>
             </li>
             <li>
-              <a href="mailto:pafko.roki@gmail.com" aria-label="Email me" className="footer-link">paas@gmail.com</a>
+              <a href="mailto:pafko.roki@gmail.com" aria-label={t.footer.emailAria} className="footer-link">paas@gmail.com</a>
             </li>
             </ul>
           </div>

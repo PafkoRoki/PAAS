@@ -65,7 +65,10 @@ const DotMaterial = shaderMaterial(
 
       float trail = texture2D(mouseTrail, gridUvCenter).r;
 
-      gl_FragColor = vec4(pixelColor, trail);
+      // The canvas uses premultiplied alpha: colour must be scaled by alpha,
+      // otherwise empty pixels still add blue (visible as a glow where the
+      // SVG goo filter isn't supported, e.g. mobile Safari).
+      gl_FragColor = vec4(pixelColor * trail, trail);
     }
   `
 );

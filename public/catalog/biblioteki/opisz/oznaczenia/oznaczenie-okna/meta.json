@@ -1,6 +1,12 @@
 {
-  "title": "Oznaczenie okna",
-  "subtitle": "Oznaczenie",
+  "title": {
+    "pl": "Oznaczenie okna",
+    "en": "Window tag"
+  },
+  "subtitle": {
+    "pl": "Oznaczenie",
+    "en": "Tag"
+  },
   "category": "Opisz",
   "subTags": [
     "Oznaczenia"

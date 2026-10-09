@@ -1,9 +1,18 @@
 {
-  "title": "Beton C20/25",
-  "subtitle": "Beton",
+  "title": {
+    "pl": "Beton C20/25",
+    "en": "Concrete C20/25"
+  },
+  "subtitle": {
+    "pl": "Beton",
+    "en": "Concrete"
+  },
   "category": "Beton",
   "subTags": [
     "Beton konstrukcyjny"
   ],
-  "description": "Domy jednorodzinne, ławy fundamentowe, płyty fundamentowe, stropy, wieńce, słupy. Jedna z najczęściej stosowanych klas."
+  "description": {
+    "pl": "Domy jednorodzinne, ławy fundamentowe, płyty fundamentowe, stropy, wieńce, słupy. Jedna z najczęściej stosowanych klas.",
+    "en": "Single-family houses, strip footings, foundation slabs, floor slabs, ring beams, columns. One of the most commonly used classes."
+  }
 }

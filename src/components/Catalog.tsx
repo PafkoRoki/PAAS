@@ -1,16 +1,29 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { assetUrl, formatSize, type CatalogItem } from "../catalog";
+import { assetUrl, formatSize, type CatalogItem, type Lang } from "../catalog";
+import { useLanguage } from "../i18n/useLanguage";
 import "./Catalog.css";
 
-const ALL = "Wszystkie";
+/** Filter value for "no filter"; the label comes from the translations. */
+const ALL = "*";
 
 interface CatalogProps {
   items: CatalogItem[];
 }
 
-const matchesQuery = (item: CatalogItem, query: string) => {
+const matchesQuery = (
+  item: CatalogItem,
+  query: string,
+  lang: Lang,
+  term: (name: string) => string
+) => {
   if (!query) return true;
-  const haystack = [item.title, item.subtitle, item.category, ...item.subTags, item.description]
+  const haystack = [
+    item.title[lang],
+    item.subtitle[lang],
+    term(item.category),
+    ...item.subTags.map(term),
+    item.description[lang],
+  ]
     .join(" ")
     .toLowerCase();
   return query
@@ -20,6 +33,7 @@ const matchesQuery = (item: CatalogItem, query: string) => {
 };
 
 export default function Catalog({ items }: CatalogProps) {
+  const { lang, t, term } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [selectedSubTag, setSelectedSubTag] = useState(ALL);
   const [query, setQuery] = useState("");
@@ -52,9 +66,9 @@ export default function Catalog({ items }: CatalogProps) {
         (p) =>
           (selectedCategory === ALL || p.category === selectedCategory) &&
           (selectedSubTag === ALL || p.subTags.includes(selectedSubTag)) &&
-          matchesQuery(p, query.trim())
+          matchesQuery(p, query.trim(), lang, term)
       ),
-    [items, selectedCategory, selectedSubTag, query]
+    [items, selectedCategory, selectedSubTag, query, lang, term]
   );
 
   return (
@@ -69,7 +83,7 @@ export default function Catalog({ items }: CatalogProps) {
             }}
             className={`tag ${selectedCategory === category ? "active" : ""}`}
           >
-            {category}
+            {category === ALL ? t.catalog.all : term(category)}
           </button>
         ))}
       </div>
@@ -81,7 +95,7 @@ export default function Catalog({ items }: CatalogProps) {
             onClick={() => setSelectedSubTag(tag)}
             className={`tag ${selectedSubTag === tag ? "active" : ""}`}
           >
-            {tag}
+            {tag === ALL ? t.catalog.all : term(tag)}
           </button>
         ))}
       </div>
@@ -90,7 +104,8 @@ export default function Catalog({ items }: CatalogProps) {
         <input
           type="search"
           className="catalog-search"
-          placeholder="Szukaj…"
+          placeholder={t.catalog.search}
+          aria-label={t.catalog.search}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -102,7 +117,7 @@ export default function Catalog({ items }: CatalogProps) {
             {p.thumbnail ? (
               <img
                 src={assetUrl(p.thumbnail)}
-                alt={p.title}
+                alt={p.title[lang]}
                 className="project-image"
                 loading="lazy"
                 decoding="async"
@@ -112,14 +127,14 @@ export default function Catalog({ items }: CatalogProps) {
             )}
 
             <div className="project-info">
-              <h3>{p.title}</h3>
-              <p>{p.subtitle}</p>
+              <h3>{p.title[lang]}</h3>
+              <p>{p.subtitle[lang]}</p>
 
               <div className="project-tags">
-                <span className="project-tag category">{p.category}</span>
-                {p.subTags.slice(0, 3).map((t) => (
-                  <span key={t} className="project-tag">
-                    {t}
+                <span className="project-tag category">{term(p.category)}</span>
+                {p.subTags.slice(0, 3).map((tag) => (
+                  <span key={tag} className="project-tag">
+                    {term(tag)}
                   </span>
                 ))}
               </div>
@@ -127,7 +142,7 @@ export default function Catalog({ items }: CatalogProps) {
           </div>
         ))}
 
-        {filtered.length === 0 && <p className="catalog-empty">Brak wyników.</p>}
+        {filtered.length === 0 && <p className="catalog-empty">{t.catalog.noResults}</p>}
       </div>
 
       {activeItem && <CatalogModal item={activeItem} onClose={() => setActiveItem(null)} />}
@@ -140,6 +155,7 @@ export default function Catalog({ items }: CatalogProps) {
 // ==========================
 
 function CatalogModal({ item, onClose }: { item: CatalogItem; onClose: () => void }) {
+  const { lang, t, term } = useLanguage();
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const isDown = useRef(false);
   const startX = useRef(0);
@@ -175,12 +191,12 @@ function CatalogModal({ item, onClose }: { item: CatalogItem; onClose: () => voi
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={onClose} aria-label="Zamknij">
+        <button className="close-btn" onClick={onClose} aria-label={t.catalog.close}>
           ×
         </button>
 
-        <h2>{item.title}</h2>
-        <p>{item.subtitle}</p>
+        <h2>{item.title[lang]}</h2>
+        <p>{item.subtitle[lang]}</p>
 
         {item.images.length > 0 && (
           <div
@@ -193,31 +209,31 @@ function CatalogModal({ item, onClose }: { item: CatalogItem; onClose: () => voi
           >
             {item.images.map((img, i) => (
               <div className="gallery-slide" key={img}>
-                <img src={assetUrl(img)} alt={`${item.title} ${i + 1}`} decoding="async" />
+                <img src={assetUrl(img)} alt={`${item.title[lang]} ${i + 1}`} decoding="async" />
               </div>
             ))}
           </div>
         )}
 
-        {item.description && <p>{item.description}</p>}
+        {item.description[lang] && <p>{item.description[lang]}</p>}
 
         <div className="modal-actions">
           {item.files.length > 0 ? (
             item.files.map((file) => (
               <a key={file.path} className="download-btn" href={assetUrl(file.path)} download={file.name}>
-                POBIERZ PLIK .{file.ext} · {formatSize(file.size)}
+                {t.catalog.download(file.ext)} · {formatSize(file.size)}
               </a>
             ))
           ) : (
-            <span className="download-btn download-btn--disabled">PLIK WKRÓTCE</span>
+            <span className="download-btn download-btn--disabled">{t.catalog.comingSoon}</span>
           )}
         </div>
 
         <div className="project-tags">
-          <span className="project-tag category">{item.category}</span>
+          <span className="project-tag category">{term(item.category)}</span>
           {item.subTags.map((tag) => (
             <span key={tag} className="project-tag">
-              {tag}
+              {term(tag)}
             </span>
           ))}
         </div>

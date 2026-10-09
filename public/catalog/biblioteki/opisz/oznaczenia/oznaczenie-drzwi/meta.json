@@ -1,6 +1,12 @@
 {
-  "title": "Oznaczenie drzwi",
-  "subtitle": "Oznaczenie",
+  "title": {
+    "pl": "Oznaczenie drzwi",
+    "en": "Door tag"
+  },
+  "subtitle": {
+    "pl": "Oznaczenie",
+    "en": "Tag"
+  },
   "category": "Opisz",
   "subTags": [
     "Oznaczenia"

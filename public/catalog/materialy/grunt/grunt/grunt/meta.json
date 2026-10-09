@@ -1,6 +1,12 @@
 {
-  "title": "Grunt",
-  "subtitle": "Grunt rodzimy",
+  "title": {
+    "pl": "Grunt",
+    "en": "Soil"
+  },
+  "subtitle": {
+    "pl": "Grunt rodzimy",
+    "en": "Native soil"
+  },
   "category": "Grunt",
   "subTags": [
     "Grunt"

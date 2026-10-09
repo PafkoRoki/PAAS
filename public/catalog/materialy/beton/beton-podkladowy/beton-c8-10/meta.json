@@ -1,9 +1,18 @@
 {
-  "title": "Beton C8/10",
-  "subtitle": "Chudy beton",
+  "title": {
+    "pl": "Beton C8/10",
+    "en": "Concrete C8/10"
+  },
+  "subtitle": {
+    "pl": "Chudy beton",
+    "en": "Lean concrete"
+  },
   "category": "Beton",
   "subTags": [
     "Beton podkładowy"
   ],
-  "description": "Chudy beton, warstwy podkładowe, pod fundamenty, podbudowy."
+  "description": {
+    "pl": "Chudy beton, warstwy podkładowe, pod fundamenty, podbudowy.",
+    "en": "Lean concrete, blinding layers under foundations, sub-bases."
+  }
 }

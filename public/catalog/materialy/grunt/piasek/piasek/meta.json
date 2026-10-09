@@ -1,6 +1,12 @@
 {
-  "title": "Piasek",
-  "subtitle": "Piasek",
+  "title": {
+    "pl": "Piasek",
+    "en": "Sand"
+  },
+  "subtitle": {
+    "pl": "Piasek",
+    "en": "Sand"
+  },
   "category": "Grunt",
   "subTags": [
     "Piasek"

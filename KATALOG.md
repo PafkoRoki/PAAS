@@ -12,32 +12,48 @@ public/catalog/
 │           ├── thumb.jpg             ← miniatura na kafelku
 │           ├── 1.jpg, 2.jpg …        ← galeria w podglądzie
 │           └── sciana-solbet-welna.rfa  ← plik(i) do pobrania
-└── materialy/                        ← sekcja „Materiały”
+├── materialy/                        ← sekcja „Materiały”
+└── terms.json                        ← tłumaczenia kategorii i podtagów na angielski
 ```
 
 ## meta.json
 
 ```json
 {
-  "title": "Ściana Solbet + wełna",
-  "subtitle": "Ściana murowana dwuwarstwowa",
+  "title": { "pl": "Ściana Solbet + wełna", "en": "Solbet wall + mineral wool" },
+  "subtitle": { "pl": "Ściana murowana dwuwarstwowa", "en": "Two-layer masonry wall" },
   "category": "Architektura",
   "subTags": ["Ściany"],
-  "description": "Opcjonalny dłuższy opis.",
+  "description": { "pl": "Opcjonalny dłuższy opis.", "en": "Optional longer description." },
   "order": 1
 }
 ```
 
+`title`, `subtitle` i `description` mogą też być zwykłym tekstem (`"title": "Ściana"`). Wtedy po angielsku pokaże się ten sam polski tekst. Tak samo, gdy brakuje `"en"`.
+
 | Pole | Wymagane | Opis |
 | --- | --- | --- |
 | `title` | tak | Nazwa na kafelku |
-| `category` | tak | Główny filtr (np. Architektura, Beton) |
+| `category` | tak | Główny filtr, **po polsku** (np. Architektura, Beton) |
 | `subtitle` | nie | Podtytuł |
-| `subTags` | nie | Podfiltry, lista tekstów |
+| `subTags` | nie | Podfiltry, lista tekstów **po polsku** |
 | `description` | nie | Opis w podglądzie |
 | `order` | nie | Przypina element wyżej (mniejsza liczba = wcześniej). Bez tego sortowanie: kategoria → podtag → nazwa |
 
 Błąd w `meta.json` (brak `title`, zły JSON) zatrzyma `npm run dev` / `npm run build` z dokładną ścieżką pliku.
+
+## Tłumaczenia kategorii — terms.json
+
+Kategorie i podtagi wpisujesz w `meta.json` tylko po polsku. Angielskie nazwy są raz, w `public/catalog/terms.json`:
+
+```json
+{
+  "Architektura": "Architecture",
+  "Ściany": "Walls"
+}
+```
+
+Gdy dodasz nową kategorię lub podtag bez wpisu w `terms.json`, `npm run dev` / `build` wypisze ostrzeżenie, a po angielsku zostanie polska nazwa.
 
 ## Pliki w folderze
 

@@ -1,6 +1,12 @@
 {
-  "title": "Świerk",
-  "subtitle": "Drewno świerkowe",
+  "title": {
+    "pl": "Świerk",
+    "en": "Spruce"
+  },
+  "subtitle": {
+    "pl": "Drewno świerkowe",
+    "en": "Spruce timber"
+  },
   "category": "Drewno",
   "subTags": [
     "Świerk"

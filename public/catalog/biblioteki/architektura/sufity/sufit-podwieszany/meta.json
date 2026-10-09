@@ -1,6 +1,12 @@
 {
-  "title": "Sufit podwieszany",
-  "subtitle": "Siniat NIDA",
+  "title": {
+    "pl": "Sufit podwieszany",
+    "en": "Suspended ceiling"
+  },
+  "subtitle": {
+    "pl": "Siniat NIDA",
+    "en": "Siniat NIDA"
+  },
   "category": "Architektura",
   "subTags": [
     "Sufity"

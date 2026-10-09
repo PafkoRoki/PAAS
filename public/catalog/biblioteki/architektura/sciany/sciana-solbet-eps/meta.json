@@ -1,6 +1,12 @@
 {
-  "title": "Ściana Solbet + EPS",
-  "subtitle": "Ściana murowana dwuwarstwowa",
+  "title": {
+    "pl": "Ściana Solbet + EPS",
+    "en": "Solbet wall + EPS"
+  },
+  "subtitle": {
+    "pl": "Ściana murowana dwuwarstwowa",
+    "en": "Two-layer masonry wall"
+  },
   "category": "Architektura",
   "subTags": [
     "Ściany"

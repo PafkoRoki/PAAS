@@ -1,9 +1,10 @@
 import catalog from 'virtual:catalog';
 
-export type { CatalogItem, CatalogFile } from './types';
+export type { CatalogItem, CatalogFile, Lang, LocalizedText } from './types';
 
-export const libraries = catalog.biblioteki ?? [];
-export const materials = catalog.materialy ?? [];
+export const libraries = catalog.sections.biblioteki ?? [];
+export const materials = catalog.sections.materialy ?? [];
+export const terms = catalog.terms;
 
 /** Resolves a path from `public/` against the deploy base (`/PAAS/`). */
 export const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;

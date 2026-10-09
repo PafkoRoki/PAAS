@@ -1,6 +1,12 @@
 {
-  "title": "Drzwi zewnętrzne",
-  "subtitle": "MB-79N SI Panel Door Single",
+  "title": {
+    "pl": "Drzwi zewnętrzne",
+    "en": "Exterior door"
+  },
+  "subtitle": {
+    "pl": "MB-79N SI Panel Door Single",
+    "en": "MB-79N SI Panel Door Single"
+  },
   "category": "Architektura",
   "subTags": [
     "Drzwi"

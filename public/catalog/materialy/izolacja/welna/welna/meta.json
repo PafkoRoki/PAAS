@@ -1,6 +1,12 @@
 {
-  "title": "Wełna",
-  "subtitle": "Wełna mineralna",
+  "title": {
+    "pl": "Wełna",
+    "en": "Mineral wool"
+  },
+  "subtitle": {
+    "pl": "Wełna mineralna",
+    "en": "Mineral wool"
+  },
   "category": "Izolacja",
   "subTags": [
     "Wełna"

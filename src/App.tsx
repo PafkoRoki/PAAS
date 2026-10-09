@@ -1,19 +1,13 @@
+import { Fragment } from "react";
 import Catalog from "./components/Catalog";
 import Hero from "./components/Hero";
 import StaggeredMenu, { type StaggeredMenuItem, type StaggeredMenuSocialItem } from "./components/StaggeredMenu";
+import LanguageSwitch from "./components/LanguageSwitch";
 import Footer from "./components/Footer";
 import Iridescence from "./components/Iridescence";
 import { assetUrl, libraries, materials } from "./catalog";
+import { useLanguage } from "./i18n/useLanguage";
 import "./App.css";
-
-const menuItems: StaggeredMenuItem[] = [
-  { label: "HOME", ariaLabel: "Go to home page", link: "/PAAS/#home" },
-  { label: "ABOUT", ariaLabel: "About", link: "/PAAS/#paas" },
-  { label: "MATERIAŁY", ariaLabel: "View our materials", link: "/PAAS/#materials" },
-  { label: "BIBLIOTEKI", ariaLabel: "View our libraries", link: "/PAAS/#libraries" },
-  { label: "KONTAKT", ariaLabel: "View our trips", link: "/PAAS/#contact" },
-  { label: "__________" },
-];
 
 const socialItems: StaggeredMenuSocialItem[] = [
   { label: "Facebook", link: "https://pl-pl.facebook.com/Pafkoroki" },
@@ -22,6 +16,18 @@ const socialItems: StaggeredMenuSocialItem[] = [
 ];
 
 function App() {
+  const { t } = useLanguage();
+
+  // Hash-only links keep ?lang= in the URL and don't reload the page.
+  const menuItems: StaggeredMenuItem[] = [
+    { label: t.nav.home, ariaLabel: t.nav.homeAria, link: "#home" },
+    { label: t.nav.about, ariaLabel: t.nav.aboutAria, link: "#paas" },
+    { label: t.nav.materials, ariaLabel: t.nav.materialsAria, link: "#materials" },
+    { label: t.nav.libraries, ariaLabel: t.nav.librariesAria, link: "#libraries" },
+    { label: t.nav.contact, ariaLabel: t.nav.contactAria, link: "#contact" },
+    { label: "__________" },
+  ];
+
   return (
     <>
 
@@ -40,8 +46,8 @@ function App() {
           colors={["#f0f0f0", "#f0f0f0", "#176bff"]}
           logoUrl={assetUrl("site/logo.svg")}
           accentColor="#176bff"
-          onMenuOpen={() => console.log('Menu opened')}
-          onMenuClose={() => console.log('Menu closed')}
+          labels={t.menu}
+          headerActions={<LanguageSwitch />}
         />
       </header>
 
@@ -61,18 +67,21 @@ function App() {
 </section>
 
 <section className="section" id="paas">
-    <h1>O PROJEKCIE</h1>
+    <h1>{t.about.heading}</h1>
 <h2>P A A S</h2>
 
 <h3>
-Projekt rozwijający biblioteki i zasoby dla programu Autodesk Revit, dostosowane do polskich standardów projektowania oraz dokumentacji technicznej i budowlanej. Jego celem jest ułatwienie pracy architektów i projektantów poprzez dostarczenie gotowych komponentów zgodnych z krajowymi wymaganiami i dobrymi praktykami.<br/><br/>
-
-Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworzenie dokumentacji projektowej, zachowując zgodność z polskimi normami i standardami rysunku technicznego. Projekt wspiera efektywniejszą pracę w środowisku BIM, ogranicza konieczność ręcznego dostosowywania elementów oraz przyspiesza przygotowanie dokumentacji.
+  {t.about.paragraphs.map((paragraph, i) => (
+    <Fragment key={i}>
+      {i > 0 && <><br /><br /></>}
+      {paragraph}
+    </Fragment>
+  ))}
 </h3>
 
     <img
         src={assetUrl("site/docs.webp")}
-        alt="Przykładowa dokumentacja wykonana z bibliotekami P A A S"
+        alt={t.about.imageAlt}
         loading="lazy"
     style={{
         width: "100%",
@@ -86,12 +95,12 @@ Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworz
 </section>
 
 <section className="section" id="libraries">
-    <h1>BIBLIOTEKI</h1>
+    <h1>{t.sections.libraries}</h1>
 </section>
       <Catalog items={libraries} />
 
 <section className="section" id="materials">
-    <h1>MATERIAŁY</h1>
+    <h1>{t.sections.materials}</h1>
 </section>
       <Catalog items={materials} />
 

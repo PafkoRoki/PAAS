@@ -1,6 +1,12 @@
 {
-  "title": "Jastrych",
-  "subtitle": "Jastrych cementowy",
+  "title": {
+    "pl": "Jastrych",
+    "en": "Screed"
+  },
+  "subtitle": {
+    "pl": "Jastrych cementowy",
+    "en": "Cement screed"
+  },
   "category": "Beton",
   "subTags": [
     "Jastrych"

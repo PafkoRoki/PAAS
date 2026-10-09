@@ -1,6 +1,12 @@
 {
-  "title": "Dach na rąbek stojący",
-  "subtitle": "Dach na rąbek stojący",
+  "title": {
+    "pl": "Dach na rąbek stojący",
+    "en": "Standing seam roof"
+  },
+  "subtitle": {
+    "pl": "Dach na rąbek stojący",
+    "en": "Standing seam roof"
+  },
   "category": "Architektura",
   "subTags": [
     "Dachy"

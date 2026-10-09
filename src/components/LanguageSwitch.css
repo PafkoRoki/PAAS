@@ -1,0 +1,35 @@
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid #1f2026;
+  background: #f0f0f0;
+}
+
+.lang-switch__btn {
+  background: transparent;
+  border: none;
+  color: #1f2026;
+  font: inherit;
+  font-weight: 1000;
+  line-height: 1;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.lang-switch__btn + .lang-switch__btn {
+  border-left: 1px solid #1f2026;
+}
+
+.lang-switch__btn:hover {
+  color: #176bff;
+}
+
+.lang-switch__btn.active {
+  background: #2d2d2d;
+  color: #f0f0f0;
+}
+
+.lang-switch__btn:focus-visible {
+  outline: 2px solid #176bff;
+  outline-offset: 2px;
+}

@@ -1,6 +1,12 @@
 {
-  "title": "Styropian",
-  "subtitle": "Styropian EPS",
+  "title": {
+    "pl": "Styropian",
+    "en": "EPS"
+  },
+  "subtitle": {
+    "pl": "Styropian EPS",
+    "en": "Expanded polystyrene (EPS)"
+  },
   "category": "Izolacja",
   "subTags": [
     "Styropian"

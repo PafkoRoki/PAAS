@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 
@@ -29,7 +29,28 @@ export interface StaggeredMenuProps {
   isFixed?: boolean;
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
+  /** Rendered in the header next to the menu button (e.g. a language switch). */
+  headerActions?: ReactNode;
+  labels?: Partial<StaggeredMenuLabels>;
 }
+
+export interface StaggeredMenuLabels {
+  open: string;
+  close: string;
+  openAria: string;
+  closeAria: string;
+  socials: string;
+  empty: string;
+}
+
+const DEFAULT_LABELS: StaggeredMenuLabels = {
+  open: 'Menu',
+  close: 'Close',
+  openAria: 'Open menu',
+  closeAria: 'Close menu',
+  socials: 'Socials',
+  empty: 'No items'
+};
 
 export const StaggeredMenu = ({
   position = 'right',
@@ -46,8 +67,12 @@ export const StaggeredMenu = ({
   changeMenuColorOnOpen = true,
   isFixed = false,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
+  headerActions,
+  labels: labelOverrides
 }: StaggeredMenuProps) => {
+  const labels = { ...DEFAULT_LABELS, ...labelOverrides };
+  const { open: openLabel, close: closeLabel } = labels;
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef<HTMLElement | null>(null);
@@ -58,7 +83,7 @@ export const StaggeredMenu = ({
   const iconRef = useRef<HTMLSpanElement | null>(null);
   const textInnerRef = useRef<HTMLSpanElement | null>(null);
   const textWrapRef = useRef<HTMLSpanElement | null>(null);
-  const [textLines, setTextLines] = useState(['Menu', 'Close']);
+  const [textLines, setTextLines] = useState([openLabel, closeLabel]);
 
   const openTlRef = useRef<gsap.core.Timeline | null>(null);
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -303,13 +328,13 @@ export const StaggeredMenu = ({
     if (!inner) return;
     textCycleAnimRef.current?.kill();
 
-    const currentLabel = opening ? 'Menu' : 'Close';
-    const targetLabel = opening ? 'Close' : 'Menu';
+    const currentLabel = opening ? openLabel : closeLabel;
+    const targetLabel = opening ? closeLabel : openLabel;
     const cycles = 3;
     const seq = [currentLabel];
     let last = currentLabel;
     for (let i = 0; i < cycles; i++) {
-      last = last === 'Menu' ? 'Close' : 'Menu';
+      last = last === openLabel ? closeLabel : openLabel;
       seq.push(last);
     }
     if (last !== targetLabel) seq.push(targetLabel);
@@ -324,7 +349,14 @@ export const StaggeredMenu = ({
       duration: 0.5 + lineCount * 0.07,
       ease: 'power4.out'
     });
-  }, []);
+  }, [openLabel, closeLabel]);
+
+  // Language change: show the current label without replaying the animation.
+  useLayoutEffect(() => {
+    textCycleAnimRef.current?.kill();
+    setTextLines([openRef.current ? closeLabel : openLabel]);
+    if (textInnerRef.current) gsap.set(textInnerRef.current, { yPercent: 0 });
+  }, [openLabel, closeLabel]);
 
   const toggleMenu = useCallback(() => {
     const target = !openRef.current;
@@ -371,10 +403,12 @@ export const StaggeredMenu = ({
             height={24}
           />
         </div>
+        <div className="sm-header-actions">
+        {headerActions}
         <button
           ref={toggleBtnRef}
           className="sm-toggle"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? labels.closeAria : labels.openAria}
           aria-expanded={open}
           aria-controls="staggered-menu-panel"
           onClick={toggleMenu}
@@ -394,6 +428,7 @@ export const StaggeredMenu = ({
             <span ref={plusVRef} className="sm-icon-line sm-icon-line-v" />
           </span>
         </button>
+        </div>
       </header>
 
       <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
@@ -426,14 +461,14 @@ export const StaggeredMenu = ({
             ) : (
               <li className="sm-panel-itemWrap" aria-hidden="true">
                 <span className="sm-panel-item">
-                  <span className="sm-panel-itemLabel">No items</span>
+                  <span className="sm-panel-itemLabel">{labels.empty}</span>
                 </span>
               </li>
             )}
           </ul>
           {displaySocials && socialItems && socialItems.length > 0 && (
             <div className="sm-socials" aria-label="Social links">
-              <h3 className="sm-socials-title">Socials</h3>
+              <h3 className="sm-socials-title">{labels.socials}</h3>
               <ul className="sm-socials-list" role="list">
                 {socialItems.map((s, i) => (
                   <li key={s.label + i} className="sm-socials-item">

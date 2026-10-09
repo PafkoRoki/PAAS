@@ -1,6 +1,12 @@
 {
-  "title": "Szkło",
-  "subtitle": "Czyste szkło",
+  "title": {
+    "pl": "Szkło",
+    "en": "Glass"
+  },
+  "subtitle": {
+    "pl": "Czyste szkło",
+    "en": "Clear glass"
+  },
   "category": "Szkło",
   "subTags": [
     "Czyste"

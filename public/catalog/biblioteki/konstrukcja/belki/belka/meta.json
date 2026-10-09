@@ -1,6 +1,12 @@
 {
-  "title": "Belka",
-  "subtitle": "Belka",
+  "title": {
+    "pl": "Belka",
+    "en": "Beam"
+  },
+  "subtitle": {
+    "pl": "Belka",
+    "en": "Beam"
+  },
   "category": "Konstrukcja",
   "subTags": [
     "Belki"

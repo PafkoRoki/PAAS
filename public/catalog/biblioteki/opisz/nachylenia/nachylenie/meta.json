@@ -1,6 +1,12 @@
 {
-  "title": "Nachylenie",
-  "subtitle": "Nachylenie w punkcie",
+  "title": {
+    "pl": "Nachylenie",
+    "en": "Slope"
+  },
+  "subtitle": {
+    "pl": "Nachylenie w punkcie",
+    "en": "Spot slope"
+  },
   "category": "Opisz",
   "subTags": [
     "Nachylenia"
