@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Working files (DWG, backups, exports) - kept locally, never deployed
+_source

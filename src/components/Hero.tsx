@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PixelTrail from "./PixelTrail";
+import { lazy, Suspense, useEffect, useState } from "react";
 import "./Hero.css";
+
+// Three.js is large; load it in a separate chunk so the page renders first.
+const PixelTrail = lazy(() => import("./PixelTrail"));
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -13,14 +15,16 @@ export default function Hero() {
   return (
     <section className={`hero ${visible ? "visible" : ""}`}>
       <div className="hero-trail">
-        <PixelTrail
-          gridSize={100}
-          trailSize={0.1}
-          maxAge={600}
-          interpolate={1}
-          color="#176cff"
-          gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
-        />
+        <Suspense fallback={null}>
+          <PixelTrail
+            gridSize={100}
+            trailSize={0.1}
+            maxAge={600}
+            interpolate={1}
+            color="#176cff"
+            gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
+          />
+        </Suspense>
       </div>
 
       <div className="hero-nav">

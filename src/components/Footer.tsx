@@ -1,4 +1,4 @@
-import React from "react";
+import { assetUrl } from "../catalog";
 import "./Footer.css";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-brand">
           <div className="logo">
             <img 
-              src="https://raw.githubusercontent.com/PafkoRoki/PAAS/main/public/Assets/logo.svg" 
+              src={assetUrl("site/logo.svg")} 
               alt="Untitled UI logo" 
               className="logo-icon" 
             />
@@ -71,19 +71,19 @@ export default function Footer() {
         <p>© 2026 P A A S</p>
         <div className="social-icons">
     <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-      <img src="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/instagram.svg" alt="Instagram" />
+      <img src={assetUrl("site/icons/instagram.svg")} alt="Instagram" />
     </a>
     <a href="https://linkedin.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-      <img src="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/facebook.svg" alt="Facebook" />
+      <img src={assetUrl("site/icons/facebook.svg")} alt="Facebook" />
     </a>
     <a href="https://facebook.com" aria-label="Strava" target="_blank" rel="noopener noreferrer">
-      <img src="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/strava.svg" alt="Strava" />
+      <img src={assetUrl("site/icons/strava.svg")} alt="Strava" />
     </a>
     <a href="https://github.com/RestDayBlamage" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-      <img src="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/github.svg" alt="Github" />
+      <img src={assetUrl("site/icons/github.svg")} alt="Github" />
     </a>
     <a href="https://www.behance.net/pawerokicki" aria-label="Behance" target="_blank" rel="noopener noreferrer">
-      <img src="https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/behance.svg" alt="Behance" />
+      <img src={assetUrl("site/icons/behance.svg")} alt="Behance" />
     </a>
         </div>
       </div>

@@ -1,51 +1,27 @@
-import React, { useState } from 'react';
-import Librarys from "./components/Librarys";
-import Materials from "./components/Materials";
+import Catalog from "./components/Catalog";
 import Hero from "./components/Hero";
-import StaggeredMenu from './components/StaggeredMenu';
+import StaggeredMenu, { type StaggeredMenuItem, type StaggeredMenuSocialItem } from "./components/StaggeredMenu";
 import Footer from "./components/Footer";
-import MetaBalls from './components/MetaBalls';
-import LogoLoop from './components/LogoLoop';
-import Iridescence from './components/Iridescence';
-import Carousel from './components/Carousel';
-import PixelTrail from './components/PixelTrail';
-import './App.css';
+import Iridescence from "./components/Iridescence";
+import { assetUrl, libraries, materials } from "./catalog";
+import "./App.css";
+
+const menuItems: StaggeredMenuItem[] = [
+  { label: "HOME", ariaLabel: "Go to home page", link: "/PAAS/#home" },
+  { label: "ABOUT", ariaLabel: "About", link: "/PAAS/#paas" },
+  { label: "MATERIAŁY", ariaLabel: "View our materials", link: "/PAAS/#materials" },
+  { label: "BIBLIOTEKI", ariaLabel: "View our libraries", link: "/PAAS/#libraries" },
+  { label: "KONTAKT", ariaLabel: "View our trips", link: "/PAAS/#contact" },
+  { label: "__________" },
+];
+
+const socialItems: StaggeredMenuSocialItem[] = [
+  { label: "Facebook", link: "https://pl-pl.facebook.com/Pafkoroki" },
+  { label: "Instagram", link: "https://www.instagram.com/pafkoroki" },
+  { label: "GitHub", link: "https://github.com/pafkoroki" },
+];
 
 function App() {
-
-  const menuItems = [
-    { label: 'HOME', ariaLabel: 'Go to home page', link: '/PAAS/#home' },
-    { label: 'ABOUT', ariaLabel: 'About', link: '/PAAS/#paas' },
-    { label: 'MATERIAŁY', ariaLabel: 'View our materials', link: '/PAAS/#materials' },
-    { label: 'BIBLIOTEKI', ariaLabel: 'View our libraries', link: '/PAAS/#libraries' },
-    { label: 'KONTAKT', ariaLabel: 'View our trips', link: '/PAAS/#contact' },
-    { label: "__________"},
-  ];
-
-  const socialItems = [
-    { label: 'Facebook', link: 'https://pl-pl.facebook.com/Pafkoroki' },
-    { label: 'Instagram', link: 'https://www.instagram.com/pafkoroki' },
-    { label: 'GitHub', link: 'https://github.com/pafkoroki' }
-  ];
-
-  const techLogos = [
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/revit.svg", alt: "revit", href: "https://www.autodesk.com/pl/products/revit/overview" },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/autocad.svg", alt: "autocad", href: "https://www.autodesk.com/pl/products/autocad/overview" },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/sketchup.svg", alt: "sketchup", href: "https://sketchup.com." },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/d5render.svg", alt: "d5render", href: "https://www.d5render.com/" },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/vite.svg", alt: "vite", href: "https://vite.dev/" },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/github.svg", alt: "github", href: "https://github.com/RestDayBlamage" },
-    { src: "https://raw.githubusercontent.com/RestDayBlamage/APR/main/public/icons/react.svg", alt: "react", href: "https://react.dev/" },
-    { src: "https://static.sketchfab.com/img/press/logos/sketchfab-logo.svg", alt: "sketchfab", href: "https://sketchfab.com/feed" },
-  ];
-
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleMenu = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <>
 
@@ -62,7 +38,7 @@ function App() {
           openMenuButtonColor="#1F2026"
           changeMenuColorOnOpen={true}
           colors={["#f0f0f0", "#f0f0f0", "#176bff"]}
-          logoUrl="https://raw.githubusercontent.com/PafkoRoki/PAAS/main/public/Assets/logo.svg"
+          logoUrl={assetUrl("site/logo.svg")}
           accentColor="#176bff"
           onMenuOpen={() => console.log('Menu opened')}
           onMenuClose={() => console.log('Menu closed')}
@@ -95,7 +71,9 @@ Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworz
 </h3>
 
     <img
-        src="https://raw.githubusercontent.com/PafkoRoki/PAAS/main/public/Assets/docs.png"
+        src={assetUrl("site/docs.webp")}
+        alt="Przykładowa dokumentacja wykonana z bibliotekami P A A S"
+        loading="lazy"
     style={{
         width: "100%",
         maxWidth: "1200px",
@@ -110,12 +88,12 @@ Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworz
 <section className="section" id="libraries">
     <h1>BIBLIOTEKI</h1>
 </section>
-      <Librarys />
+      <Catalog items={libraries} />
 
 <section className="section" id="materials">
     <h1>MATERIAŁY</h1>
 </section>
-      <Materials />
+      <Catalog items={materials} />
 
 <section className="section" id="about">
           <h1>Software & Tools</h1>
