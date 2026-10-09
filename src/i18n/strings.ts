@@ -1,18 +1,18 @@
 import type { Lang } from "../catalog/types";
 
+const plPlural = new Intl.PluralRules("pl");
+const plItems = (n: number) => {
+  const form = plPlural.select(n);
+  return `${n} ${form === "one" ? "element" : form === "few" ? "elementy" : "elementów"}`;
+};
+
 const pl = {
   pageTitle: "P A A S — biblioteki Revit",
 
   nav: {
-    home: "START",
-    about: "O PROJEKCIE",
-    materials: "MATERIAŁY",
-    libraries: "BIBLIOTEKI",
+    library: "BIBLIOTEKA",
     contact: "KONTAKT",
-    homeAria: "Przejdź na stronę główną",
-    aboutAria: "O projekcie",
-    materialsAria: "Zobacz materiały",
-    librariesAria: "Zobacz biblioteki",
+    libraryAria: "Przejdź do biblioteki",
     contactAria: "Kontakt",
   },
 
@@ -29,29 +29,26 @@ const pl = {
     switchAria: "Zmień język",
   },
 
-  hero: {
-    libraries: "Biblioteki",
-    materials: "Materiały",
-  },
-
-  about: {
-    heading: "O PROJEKCIE",
-    paragraphs: [
-      "Projekt rozwijający biblioteki i zasoby dla programu Autodesk Revit, dostosowane do polskich standardów projektowania oraz dokumentacji technicznej i budowlanej. Jego celem jest ułatwienie pracy architektów i projektantów poprzez dostarczenie gotowych komponentów zgodnych z krajowymi wymaganiami i dobrymi praktykami.",
-      "Dzięki P A A S użytkownicy mogą korzystać z bibliotek usprawniających tworzenie dokumentacji projektowej, zachowując zgodność z polskimi normami i standardami rysunku technicznego. Projekt wspiera efektywniejszą pracę w środowisku BIM, ogranicza konieczność ręcznego dostosowywania elementów oraz przyspiesza przygotowanie dokumentacji.",
-    ],
-    imageAlt: "Przykładowa dokumentacja wykonana z bibliotekami P A A S",
-  },
-
-  sections: {
-    libraries: "BIBLIOTEKI",
-    materials: "MATERIAŁY",
+  library: {
+    heading: "BIBLIOTEKA",
+    intro: "Rodziny, typy systemowe i materiały Revit dopasowane do polskich norm i rysunku technicznego.",
   },
 
   catalog: {
     all: "Wszystkie",
     search: "Szukaj…",
+    clearSearch: "Wyczyść wyszukiwanie",
+    clearFilters: "Wyczyść filtry",
     noResults: "Brak wyników.",
+    items: plItems,
+    viewThumbnails: "Miniatury",
+    viewList: "Lista",
+    ribbonCategories: "Kategorie",
+    ribbonSearch: "Wyszukaj",
+    ribbonView: "Widok",
+    minimizeRibbon: "Zwiń wstążkę",
+    expandRibbon: "Rozwiń wstążkę",
+    columns: { name: "Nazwa", category: "Kategoria", subTag: "Podkategoria", files: "Pliki" },
     download: (ext: string) => `POBIERZ PLIK .${ext}`,
     comingSoon: "PLIK WKRÓTCE",
     close: "Zamknij",
@@ -69,15 +66,9 @@ const en: Strings = {
   pageTitle: "P A A S — Revit libraries",
 
   nav: {
-    home: "HOME",
-    about: "ABOUT",
-    materials: "MATERIALS",
-    libraries: "LIBRARIES",
+    library: "LIBRARY",
     contact: "CONTACT",
-    homeAria: "Go to home page",
-    aboutAria: "About the project",
-    materialsAria: "View materials",
-    librariesAria: "View libraries",
+    libraryAria: "Go to the library",
     contactAria: "Contact",
   },
 
@@ -94,29 +85,26 @@ const en: Strings = {
     switchAria: "Change language",
   },
 
-  hero: {
-    libraries: "Libraries",
-    materials: "Materials",
-  },
-
-  about: {
-    heading: "ABOUT THE PROJECT",
-    paragraphs: [
-      "A project that develops libraries and resources for Autodesk Revit, tailored to Polish design standards and to technical and construction documentation. Its goal is to make the work of architects and designers easier by providing ready-made components that follow national requirements and good practice.",
-      "With P A A S, users get libraries that speed up the preparation of design documentation while staying consistent with Polish codes and technical drawing standards. The project supports more efficient BIM workflows, reduces the need to adjust elements by hand and shortens the time it takes to prepare documentation.",
-    ],
-    imageAlt: "Sample documentation made with P A A S libraries",
-  },
-
-  sections: {
-    libraries: "LIBRARIES",
-    materials: "MATERIALS",
+  library: {
+    heading: "LIBRARY",
+    intro: "Revit families, system types and materials tailored to Polish codes and technical drawing standards.",
   },
 
   catalog: {
     all: "All",
     search: "Search…",
+    clearSearch: "Clear search",
+    clearFilters: "Clear filters",
     noResults: "No results.",
+    items: (n: number) => `${n} ${n === 1 ? "item" : "items"}`,
+    viewThumbnails: "Thumbnails",
+    viewList: "List",
+    ribbonCategories: "Categories",
+    ribbonSearch: "Search",
+    ribbonView: "View",
+    minimizeRibbon: "Minimize the ribbon",
+    expandRibbon: "Expand the ribbon",
+    columns: { name: "Name", category: "Category", subTag: "Subcategory", files: "Files" },
     download: (ext: string) => `DOWNLOAD .${ext} FILE`,
     comingSoon: "FILE COMING SOON",
     close: "Close",

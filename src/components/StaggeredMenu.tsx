@@ -60,7 +60,7 @@ export const StaggeredMenu = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
+  logoUrl,
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
   accentColor = '#5227FF',
@@ -393,16 +393,11 @@ export const StaggeredMenu = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo">
-          <img
-            src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
-            alt="Logo"
-            className="sm-logo-img"
-            draggable={false}
-            width={110}
-            height={24}
-          />
-        </div>
+        {logoUrl && (
+          <div className="sm-logo" aria-label="Logo">
+            <img src={logoUrl} alt="Logo" className="sm-logo-img" draggable={false} width={110} height={24} />
+          </div>
+        )}
         <div className="sm-header-actions">
         {headerActions}
         <button

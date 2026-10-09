@@ -7,7 +7,8 @@ import type {
   CatalogItem,
   CatalogMeta,
   LocalizedInput,
-  LocalizedText
+  LocalizedText,
+  SectionConfig
 } from '../src/catalog/types';
 
 /**
@@ -18,7 +19,8 @@ import type {
  *   any other image        – modal gallery, sorted by name
  *   .rfa/.rvt/.ttf/...     – downloadable files
  *
- * `public/catalog/terms.json` translates category and sub-tag names (Polish → English).
+ * `public/catalog/terms.json` translates category, sub-tag and tab names (Polish → English).
+ * `public/catalog/<section>/section.json` may group a whole section under one ribbon tab.
  */
 
 const VIRTUAL_ID = 'virtual:catalog';
@@ -75,7 +77,7 @@ function readMeta(file: string): CatalogMeta {
   return m as CatalogMeta;
 }
 
-function readItem(sectionDir: string, itemDir: string, publicDir: string): CatalogItem {
+function readItem(catalogDir: string, itemDir: string, publicDir: string, config: SectionConfig): CatalogItem {
   const meta = readMeta(path.join(itemDir, 'meta.json'));
   const entries = fs.readdirSync(itemDir, { withFileTypes: true }).filter(e => e.isFile());
   const url = (name: string) => toUrlPath(path.relative(publicDir, itemDir), name);
@@ -100,7 +102,9 @@ function readItem(sectionDir: string, itemDir: string, publicDir: string): Catal
   }
 
   return {
-    id: path.relative(sectionDir, itemDir).split(path.sep).join('/'),
+    id: path.relative(catalogDir, itemDir).split(path.sep).join('/'),
+    tab: config.tab ?? meta.category,
+    panel: meta.category,
     title: localize(meta.title),
     subtitle: localize(meta.subtitle),
     category: meta.category,
@@ -132,9 +136,8 @@ function compareItems(a: CatalogItem, b: CatalogItem) {
   );
 }
 
-function readTerms(catalogDir: string): Record<string, string> {
-  const file = path.join(catalogDir, 'terms.json');
-  if (!fs.existsSync(file)) return {};
+function readJson<T>(file: string, fallback: T): T {
+  if (!fs.existsSync(file)) return fallback;
   try {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch (err) {
@@ -143,22 +146,24 @@ function readTerms(catalogDir: string): Record<string, string> {
 }
 
 export function buildCatalog(catalogDir: string, publicDir: string): Catalog {
-  const catalog: Catalog = { sections: {}, terms: {} };
+  const catalog: Catalog = { items: [], terms: {} };
   if (!fs.existsSync(catalogDir)) return catalog;
 
   for (const section of fs.readdirSync(catalogDir, { withFileTypes: true })) {
     if (!section.isDirectory()) continue;
     const sectionDir = path.join(catalogDir, section.name);
-    catalog.sections[section.name] = findItemDirs(sectionDir)
-      .map(dir => readItem(sectionDir, dir, publicDir))
-      .sort(compareItems);
+    const config = readJson<SectionConfig>(path.join(sectionDir, 'section.json'), {});
+    catalog.items.push(
+      ...findItemDirs(sectionDir)
+        .map(dir => readItem(catalogDir, dir, publicDir, config))
+        .sort(compareItems)
+    );
   }
 
-  catalog.terms = readTerms(catalogDir);
+  catalog.terms = readJson<Record<string, string>>(path.join(catalogDir, 'terms.json'), {});
   const untranslated = new Set(
-    Object.values(catalog.sections)
-      .flat()
-      .flatMap(item => [item.category, ...item.subTags])
+    catalog.items
+      .flatMap(item => [item.tab, item.category, ...item.subTags])
       .filter(term => !(term in catalog.terms))
   );
   if (untranslated.size)

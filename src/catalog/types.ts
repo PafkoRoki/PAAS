@@ -28,8 +28,12 @@ export interface CatalogFile {
 }
 
 export interface CatalogItem {
-  /** Folder path inside the section, e.g. `architektura/sciany/sciana-solbet-welna`. */
+  /** Folder path inside public/catalog, e.g. `biblioteki/architektura/sciany/sciana-solbet-welna`. */
   id: string;
+  /** Ribbon tab (Polish). The category, or the section's `tab` from section.json. */
+  tab: string;
+  /** Ribbon panel inside the tab (Polish). Always the category. */
+  panel: string;
   title: LocalizedText;
   subtitle: LocalizedText;
   category: string;
@@ -41,8 +45,15 @@ export interface CatalogItem {
   files: CatalogFile[];
 }
 
+/** Optional `public/catalog/<section>/section.json`. */
+export interface SectionConfig {
+  /** Put every item of the section under one ribbon tab; categories become panels. */
+  tab?: string;
+}
+
 export interface Catalog {
-  sections: Record<string, CatalogItem[]>;
+  /** All items: sections in folder order, each sorted by category and title. */
+  items: CatalogItem[];
   /** Polish category / sub-tag name → English name. */
   terms: Record<string, string>;
 }

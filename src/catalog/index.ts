@@ -2,8 +2,7 @@ import catalog from 'virtual:catalog';
 
 export type { CatalogItem, CatalogFile, Lang, LocalizedText } from './types';
 
-export const libraries = catalog.sections.biblioteki ?? [];
-export const materials = catalog.sections.materialy ?? [];
+export const items = catalog.items;
 export const terms = catalog.terms;
 
 /** Resolves a path from `public/` against the deploy base (`/PAAS/`). */

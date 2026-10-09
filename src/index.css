@@ -29,6 +29,9 @@
 }
 
 :root {
+  /* UI font: menu, language switch and the library (Chrome/Windows button font) */
+  --ui-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
   font-family: 'Helvetica', sans-serif;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);

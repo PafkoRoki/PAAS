@@ -5,14 +5,15 @@ Strona sama zbiera wszystkie foldery z plikiem `meta.json`, nie trzeba nic zmien
 
 ```
 public/catalog/
-├── biblioteki/                       ← sekcja „Biblioteki”
+├── biblioteki/                       ← rodziny i typy (zakładka = kategoria)
 │   └── architektura/sciany/          ← dowolne podfoldery (tylko porządek na dysku)
 │       └── sciana-solbet-welna/      ← jeden element
 │           ├── meta.json             ← opis (wymagany)
 │           ├── thumb.jpg             ← miniatura na kafelku
 │           ├── 1.jpg, 2.jpg …        ← galeria w podglądzie
 │           └── sciana-solbet-welna.rfa  ← plik(i) do pobrania
-├── materialy/                        ← sekcja „Materiały”
+├── materialy/                        ← materiały (jedna zakładka „Materiały”)
+│   └── section.json                  ← { "tab": "Materiały" }
 └── terms.json                        ← tłumaczenia kategorii i podtagów na angielski
 ```
 
@@ -42,6 +43,22 @@ public/catalog/
 
 Błąd w `meta.json` (brak `title`, zły JSON) zatrzyma `npm run dev` / `npm run build` z dokładną ścieżką pliku.
 
+## Zakładki i panele wstążki
+
+Wszystko trafia do jednego katalogu. Na wstążce:
+
+- **zakładka**: kategoria elementu (Architektura, Konstrukcja…),
+- **panel**: też kategoria,
+- **duże przyciski**: podkategorie (`subTags`).
+
+Folder sekcji może mieć `section.json` z polem `tab`. Wtedy wszystkie jego elementy lądują w jednej zakładce, a ich kategorie stają się osobnymi panelami, jak w Revicie. Tak jest zrobione dla materiałów:
+
+```json
+{ "tab": "Materiały" }
+```
+
+Zakładka „Materiały” ma panele Beton, Drewno, Grunt, Izolacja, Mur i Szkło. Kliknięcie tytułu panelu filtruje cały panel. Nazwę zakładki też trzeba dodać do `terms.json`.
+
 ## Tłumaczenia kategorii — terms.json
 
 Kategorie i podtagi wpisujesz w `meta.json` tylko po polsku. Angielskie nazwy są raz, w `public/catalog/terms.json`:
@@ -54,6 +71,29 @@ Kategorie i podtagi wpisujesz w `meta.json` tylko po polsku. Angielskie nazwy s�
 ```
 
 Gdy dodasz nową kategorię lub podtag bez wpisu w `terms.json`, `npm run dev` / `build` wypisze ostrzeżenie, a po angielsku zostanie polska nazwa.
+
+## Ikony na wstążce
+
+Kategorie są zakładkami wstążki, a podkategorie dużymi przyciskami z ikoną. Każda ikona to **aksonometria (izometria) w sześcianie 1×1×1**, zdefiniowana w [src/components/catalog/icons.tsx](src/components/catalog/icons.tsx).
+
+Element opisujesz bryłami we współrzędnych sześcianu (0–1): **x** w prawo-przód, **y** w lewo-przód, **z** w górę. Rzut i cieniowanie (góra jasna, lewa średnia, prawa ciemna) liczy kod:
+
+```tsx
+// ściana dwuwarstwowa: mur + izolacja
+const wall = (
+  <>
+    {box([0, 0.3, 0, 1, 0.56, 1], CONCRETE)}   // [x0, y0, z0, x1, y1, z1], kolor
+    {box([0, 0.56, 0, 1, 0.74, 1], INSULATION)}
+  </>
+);
+```
+
+- `box()`: prostopadłościan, `face()`: dowolna ściana z punktów 3D, `line()`: linia 3D, `planeText()`: tekst w pionowej płaszczyźnie.
+- Bryły rysuj **od tyłu do przodu** (mniejsze x+y najpierw, niższe z najpierw).
+- `SHAPES`: przypisanie polskiej nazwy podkategorii do rysunku.
+- `MATERIALS`: materiały są sześcianem-próbką w kolorze materiału, z wzorem `dots` (kruszywo), `grain` (słoje), `fibres` (włókna) albo `glass`.
+
+Nowa podkategoria bez wpisu dostaje ikonę ogólną (mała kostka w sześcianie), więc nic się nie psuje.
 
 ## Pliki w folderze
 

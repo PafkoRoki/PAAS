@@ -363,7 +363,42 @@
 }
 
 .sm-header-actions {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+/* Language switch and menu button share one height, border and the menu's own font. */
+.sm-header-actions {
+  --header-control-height: 36px;
+  align-items: stretch;
+}
+
+.sm-header-actions .sm-toggle,
+.sm-header-actions .lang-switch {
+  box-sizing: border-box;
+  height: var(--header-control-height);
+  border: 1px solid #1f2026;
+  background-color: #f0f0f0;
+}
+
+.sm-header-actions .sm-toggle {
+  gap: 0.5rem;
+  padding: 0 12px;
+  font-family: var(--ui-font);
+  font-size: 13.333px;
+  font-weight: 1000;
+}
+
+/* Same font as the Menu button */
+.sm-header-actions .lang-switch__btn {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+  font-family: var(--ui-font);
+  font-size: 13.333px;
+  font-weight: 1000;
+  line-height: 1;
 }
