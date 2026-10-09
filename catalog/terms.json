@@ -1,9 +1,9 @@
 {
+  "Materiały": "Materials",
   "Architektura": "Architecture",
   "Konstrukcja": "Structure",
   "Systemy": "Systems",
   "Opisz": "Annotation",
-
   "Belki": "Beams",
   "Dachy": "Roofs",
   "Drzwi": "Doors",
@@ -19,14 +19,12 @@
   "Słupy": "Columns",
   "Wymiary": "Dimensions",
   "Ściany": "Walls",
-
   "Beton": "Concrete",
   "Drewno": "Timber",
   "Grunt": "Soil",
   "Izolacja": "Insulation",
   "Mur": "Masonry",
   "Szkło": "Glass",
-
   "Beton komórkowy": "Aerated concrete",
   "Beton konstrukcyjny": "Structural concrete",
   "Beton podkładowy": "Lean concrete",
