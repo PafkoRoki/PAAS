@@ -402,15 +402,6 @@
   color: #fff;
 }
 
-/* Desktop: the ribbon stays on top and the tiles scroll underneath the glass. */
-@media (min-width: 901px) {
-  .ribbon {
-    position: sticky;
-    top: 6.5rem;
-    z-index: 50;
-  }
-}
-
 @media (max-width: 640px) {
   .ribbon {
     border-radius: 20px;
