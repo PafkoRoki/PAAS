@@ -1,14 +1,18 @@
 {
   "title": {
-    "pl": "Oznaczenie okna",
-    "en": "Window tag"
+    "pl": "Etykieta okna",
+    "en": "Window label"
   },
   "subtitle": {
-    "pl": "Oznaczenie",
-    "en": "Tag"
+    "pl": "Znak + szerokość i wysokość",
+    "en": "Mark + width and height"
   },
   "category": "Opisz",
   "subTags": [
     "Oznaczenia"
-  ]
+  ],
+  "description": {
+    "pl": "Symbol opisowy ogólny do zagnieżdżenia w rodzinie okna: znak nad pionową linią, a obok niej obrócone wymiary okna. Font ISOCPEUR.",
+    "en": "Generic annotation to nest in a window family: mark above a vertical leader with the window dimensions rotated beside it. ISOCPEUR font."
+  }
 }
