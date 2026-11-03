@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Gruzobeton",
+    "en": "Gruzobeton"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: gruzobeton",
+    "en": "Drafting pattern: rubble concrete"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Beton"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Gruzobeton z pliku Poligon (tam: Beton). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Gruzobeton from the Poligon file (there: Beton). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Ziemia",
+    "en": "Ziemia"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: grunt rodzimy",
+    "en": "Drafting pattern: native soil"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Grunt"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Ziemia z pliku Poligon (tam: GRUNT PL). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Ziemia from the Poligon file (there: GRUNT PL). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

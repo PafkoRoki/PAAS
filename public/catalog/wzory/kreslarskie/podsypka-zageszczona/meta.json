@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Podsypka zagęszczona",
+    "en": "Podsypka zagęszczona"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: podsypka zagęszczona",
+    "en": "Drafting pattern: compacted bedding"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Grunt"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Podsypka zageszczona z pliku Poligon (tam: Piach - gęsty). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Podsypka zageszczona from the Poligon file (there: Piach - gęsty). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

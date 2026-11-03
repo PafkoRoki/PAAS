@@ -1,18 +1,18 @@
 {
   "title": {
-    "pl": "Wymiar zewnętrzny i wewnętrzny",
-    "en": "External and internal dimension"
+    "pl": "Linie wymiarowe",
+    "en": "Dimension styles"
   },
   "subtitle": {
-    "pl": "Style wymiarowania wg PN-B-01029",
-    "en": "Dimension styles per PN-B-01029"
+    "pl": "Zestaw stylów wymiarowania wg PN-B-01029",
+    "en": "Dimension style set per PN-B-01029"
   },
   "category": "Opisz",
   "subTags": [
     "Wymiary"
   ],
   "description": {
-    "pl": "Dwa typy wymiaru liniowego, każdy w osobnym pliku .rvt. PAAS_Wymiar_Zewnetrzny: ISOCPEUR 4,0 mm, zwykłe cyfry. PAAS_Wymiar_Wewnetrzny: ISOCPEUR 3,5 mm, pogrubione. Oba mają ukośną kreskę jako znacznik, tekst 1 mm nad linią, linie wymiarowe i pomocnicze przedłużone o 2 mm, ciągi co 8 mm (norma: co najmniej 7 mm), wymiary w cm. Wczytanie: Zarządzaj → Przenieś standardy projektu → Style wymiarowania.",
-    "en": "Two linear dimension types, each in its own .rvt file. PAAS_Wymiar_Zewnetrzny: ISOCPEUR 4.0 mm, regular digits. PAAS_Wymiar_Wewnetrzny: ISOCPEUR 3.5 mm, bold. Both use an oblique tick, text 1 mm above the line, dimension and witness lines extended by 2 mm, 8 mm chain spacing (standard: at least 7 mm), values in cm. To load: Manage → Transfer Project Standards → Dimension Styles."
+    "pl": "Jeden plik .rvt ze wszystkimi stylami wymiarowania PAAS, wszystkie w ISOCPEUR. PAAS_Wymiar_Zewnetrzny: 4,0 mm, zwykłe cyfry. PAAS_Wymiar_Wewnetrzny: 3,5 mm, pogrubione. Oba liniowe mają ukośną kreskę jako znacznik, linie wymiarowe i pomocnicze przedłużone o 2 mm i ciągi co 8 mm (norma: co najmniej 7 mm, pierwszy ciąg co najmniej 10 mm od obrysu). PAAS_Wymiar_Katowy, PAAS_Wymiar_Promien i PAAS_Wymiar_Srednica: 3,5 mm, zaczerniona strzałka 15°. Tekst zawsze 1 mm nad linią, długości w cm, kąty w stopniach. Wczytanie: Zarządzaj → Przenieś standardy projektu → Style wymiarowania. Wszystkie typy mają przedrostek PAAS_, więc nie nadpiszą Twoich typów.",
+    "en": "One .rvt file with all PAAS dimension styles, all in ISOCPEUR. PAAS_Wymiar_Zewnetrzny: 4.0 mm, regular digits. PAAS_Wymiar_Wewnetrzny: 3.5 mm, bold. Both linear styles use an oblique tick, dimension and witness lines extended by 2 mm, and 8 mm chain spacing (standard: at least 7 mm, first chain at least 10 mm from the outline). PAAS_Wymiar_Katowy, PAAS_Wymiar_Promien and PAAS_Wymiar_Srednica: 3.5 mm, filled 15° arrow. Text always 1 mm above the line, lengths in cm, angles in degrees. To load: Manage → Transfer Project Standards → Dimension Styles. All types are prefixed PAAS_, so they never overwrite your own types."
   }
 }

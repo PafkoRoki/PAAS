@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Nachylenie w %",
+    "en": "Slope in %"
+  },
+  "subtitle": {
+    "pl": "Strzałka z grotem jednostronnym",
+    "en": "Half-arrowhead slope arrow"
+  },
+  "category": "Opisz",
+  "subTags": [
+    "Nachylenia"
+  ],
+  "description": {
+    "pl": "Symbol opisowy nachylenia w procentach, np. spadek rynny lub tarasu. Pozioma kreska z grotem w postaci jednej kreski po jednej stronie, wskazującym kierunek spadku. Wartość wpisujesz w parametrze Nachylenie.",
+    "en": "Slope annotation in percent, e.g. gutter or terrace fall. A horizontal line with a one-sided single-stroke arrowhead pointing downhill. Set the value in the Nachylenie (slope) parameter."
+  }
+}

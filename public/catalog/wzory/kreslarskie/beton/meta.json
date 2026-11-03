@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Beton",
+    "en": "Beton"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: beton, jastrych, zaprawa cementowa",
+    "en": "Drafting pattern: concrete, screed, cement mortar"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Beton"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Beton z pliku Poligon (tam: Concrete), bez kropek. W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Beton from the Poligon file (there: Concrete), dots removed. In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

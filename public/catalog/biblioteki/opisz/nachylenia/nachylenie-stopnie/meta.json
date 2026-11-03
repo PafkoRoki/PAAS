@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Nachylenie w °",
+    "en": "Slope in °"
+  },
+  "subtitle": {
+    "pl": "Strzałka z grotem jednostronnym",
+    "en": "Half-arrowhead slope arrow"
+  },
+  "category": "Opisz",
+  "subTags": [
+    "Nachylenia"
+  ],
+  "description": {
+    "pl": "Symbol opisowy nachylenia w stopniach, np. kąt połaci dachu lub rampy. Pozioma kreska z grotem w postaci jednej kreski po jednej stronie, wskazującym kierunek spadku. Wartość wpisujesz w parametrze Nachylenie.",
+    "en": "Slope annotation in degrees, e.g. roof pitch or ramp angle. A horizontal line with a one-sided single-stroke arrowhead pointing downhill. Set the value in the Nachylenie (slope) parameter."
+  }
+}

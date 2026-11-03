@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Wełna",
+    "en": "Wełna"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: wełna mineralna",
+    "en": "Drafting pattern: mineral wool"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Izolacja"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Welna z pliku Poligon (tam: H1INSUN1 0.0006). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Welna from the Poligon file (there: H1INSUN1 0.0006). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

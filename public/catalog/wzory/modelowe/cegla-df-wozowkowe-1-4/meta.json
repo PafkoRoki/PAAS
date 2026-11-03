@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Cegła DF wozówkowe ukośne 1/4",
+    "en": "Cegła DF wozówkowe ukośne 1/4"
+  },
+  "subtitle": {
+    "pl": "Wzór modelowy: same wozówki, przesunięcie o ¼ cegły w każdej warstwie (ukośne)",
+    "en": "Model pattern: raking stretcher bond, quarter-brick offset"
+  },
+  "category": "Modelowe",
+  "subTags": [
+    "Cegła"
+  ],
+  "description": {
+    "pl": "Wzór modelowy _PAAS_Cegla DF wozowkowe ukosne 1/4: cegła DF 210 × 100 × 65 mm, spoiny 10 mm (moduł 220 × 75 mm, główka 110 mm). Każda cegła ma własny obrys, więc spoina jest widoczna. Do elewacji i powierzchni ścian. W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Modelowe → Nowy → Niestandardowy → Importuj.",
+    "en": "Model pattern _PAAS_Cegla DF wozowkowe ukosne 1/4: DF brick 210 × 100 × 65 mm, 10 mm joints (module 220 × 75 mm, header 110 mm). Every brick has its own outline, so the joint is visible. For elevations and wall surfaces. In Revit: Manage → Additional Settings → Fill Patterns → Model → New → Custom → Import."
+  }
+}

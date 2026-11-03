@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Styropian",
+    "en": "Styropian"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: styropian EPS / XPS",
+    "en": "Drafting pattern: EPS / XPS insulation"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Izolacja"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Styropian z pliku Poligon (tam: ACAD_ISO02W100). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Styropian from the Poligon file (there: ACAD_ISO02W100). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

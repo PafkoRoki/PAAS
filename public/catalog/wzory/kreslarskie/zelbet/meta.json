@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Żelbet",
+    "en": "Żelbet"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: żelbet",
+    "en": "Drafting pattern: reinforced concrete"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Beton"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Zelbet z pliku Poligon (tam: ANSI33). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Zelbet from the Poligon file (there: ANSI33). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Oznaczenie pomieszczenia",
+    "en": "Room tag"
+  },
+  "subtitle": {
+    "pl": "Numer, nazwa, powierzchnia, posadzka",
+    "en": "Number, name, area, floor finish"
+  },
+  "category": "Opisz",
+  "subTags": [
+    "Oznaczenia"
+  ],
+  "description": {
+    "pl": "Oznaczenie pomieszczenia w dwóch wierszach rozdzielonych linią. U góry numer | nazwa, na dole powierzchnia | wykończenie posadzki. Font ISOCPEUR. Wczytaj do projektu i oznaczaj pomieszczenia poleceniem Oznacz pomieszczenie.",
+    "en": "Two-row room tag split by a line. Top: number | name, bottom: area | floor finish. ISOCPEUR font. Load it into the project and tag rooms with Tag Room."
+  }
+}

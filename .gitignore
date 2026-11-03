@@ -25,3 +25,8 @@ dist-ssr
 
 # Working files (DWG, backups, exports) - kept locally, never deployed
 _source
+
+# Revit backup copies (Name.0001.rvt / .rfa)
+*.[0-9][0-9][0-9][0-9].rvt
+*.[0-9][0-9][0-9][0-9].rfa
+*.[0-9][0-9][0-9][0-9].rte
