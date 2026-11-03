@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Cegła DF holenderskie",
+    "en": "Cegła DF holenderskie"
+  },
+  "subtitle": {
+    "pl": "Wzór modelowy: warstwa główek / warstwa wozówka + główka na zmianę",
+    "en": "Model pattern: Dutch bond"
+  },
+  "category": "Modelowe",
+  "subTags": [
+    "Cegła"
+  ],
+  "description": {
+    "pl": "Wzór modelowy _PAAS_Cegla DF holenderskie: cegła DF 210 × 100 × 65 mm, spoiny 10 mm (moduł 220 × 75 mm, główka 110 mm). Każda cegła ma własny obrys, więc spoina jest widoczna. Do elewacji i powierzchni ścian. W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Modelowe → Nowy → Niestandardowy → Importuj.",
+    "en": "Model pattern _PAAS_Cegla DF holenderskie: DF brick 210 × 100 × 65 mm, 10 mm joints (module 220 × 75 mm, header 110 mm). Every brick has its own outline, so the joint is visible. For elevations and wall surfaces. In Revit: Manage → Additional Settings → Fill Patterns → Model → New → Custom → Import."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Podsypka",
+    "en": "Podsypka"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: podsypka piaskowa",
+    "en": "Drafting pattern: sand bedding"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Grunt"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Podsypka z pliku Poligon (tam: Piach). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Podsypka from the Poligon file (there: Piach). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}

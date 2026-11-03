@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Etykieta przejścia",
+    "en": "Passage label"
+  },
+  "subtitle": {
+    "pl": "Szerokość i wysokość otworu",
+    "en": "Opening width and height"
+  },
+  "category": "Opisz",
+  "subTags": [
+    "Oznaczenia"
+  ],
+  "description": {
+    "pl": "Symbol opisowy ogólny do zagnieżdżenia w rodzinie otworu lub przejścia: pozioma linia z szerokością nad nią i wysokością pod nią, bez znaku. Font ISOCPEUR.",
+    "en": "Generic annotation to nest in an opening or passage family: a horizontal leader with the width above and the height below, no mark. ISOCPEUR font."
+  }
+}

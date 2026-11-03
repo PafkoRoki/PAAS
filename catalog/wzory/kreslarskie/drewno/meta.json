@@ -1,0 +1,18 @@
+{
+  "title": {
+    "pl": "Drewno",
+    "en": "Drewno"
+  },
+  "subtitle": {
+    "pl": "Wzór kreślarski: drewno w przekroju",
+    "en": "Drafting pattern: timber in section"
+  },
+  "category": "Kreślarskie",
+  "subTags": [
+    "Drewno"
+  ],
+  "description": {
+    "pl": "Wzór _PAAS_Drewno z pliku Poligon (tam: HWOD20E1). W Revicie: Zarządzaj → Dodatkowe ustawienia → Wzory wypełnień → Kreślarskie → Nowy → Niestandardowy → Importuj.",
+    "en": "Pattern _PAAS_Drewno from the Poligon file (there: HWOD20E1). In Revit: Manage → Additional Settings → Fill Patterns → Drafting → New → Custom → Import."
+  }
+}
