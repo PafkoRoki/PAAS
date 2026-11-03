@@ -122,7 +122,7 @@ Zasady:
 - Każde słowo zaczyna się wielką literą, bez polskich znaków i spacji.
 - Revit bierze nazwę rodziny z nazwy pliku, więc po wczytaniu w przeglądarce projektu widać `PAAS_…` i od razu wiadomo, skąd jest rodzina.
 
-Przykłady: `PAAS_Oznaczenie_Drzwi.rfa`, `PAAS_Oznaczenie_Okna.rfa`, `PAAS_Sciana_Solbet-Welna.rfa`, `PAAS_Okno_Aluprof-MB104_Passive.rfa`.
+Przykłady: `PAAS_Etykieta_Drzwi.rfa`, `PAAS_Etykieta_Okna.rfa`, `PAAS_Sciana_Solbet-Welna.rfa`, `PAAS_Okno_Aluprof-MB104_Passive.rfa`.
 
 Fonty zostawiają swoją oryginalną nazwę (`ISOCPEUR.ttf`), bo system rozpoznaje je po nazwie rodziny fontu.
 

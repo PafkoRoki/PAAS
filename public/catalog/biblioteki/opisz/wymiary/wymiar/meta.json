@@ -1,14 +1,18 @@
 {
   "title": {
-    "pl": "Wymiar",
-    "en": "Dimension"
+    "pl": "Wymiar zewnętrzny i wewnętrzny",
+    "en": "External and internal dimension"
   },
   "subtitle": {
-    "pl": "Wymiar",
-    "en": "Dimension"
+    "pl": "Style wymiarowania wg PN-B-01029",
+    "en": "Dimension styles per PN-B-01029"
   },
   "category": "Opisz",
   "subTags": [
     "Wymiary"
-  ]
+  ],
+  "description": {
+    "pl": "Dwa typy wymiaru liniowego, każdy w osobnym pliku .rvt. PAAS_Wymiar_Zewnetrzny: ISOCPEUR 4,0 mm, zwykłe cyfry. PAAS_Wymiar_Wewnetrzny: ISOCPEUR 3,5 mm, pogrubione. Oba mają ukośną kreskę jako znacznik, tekst 1 mm nad linią, linie wymiarowe i pomocnicze przedłużone o 2 mm, ciągi co 8 mm (norma: co najmniej 7 mm), wymiary w cm. Wczytanie: Zarządzaj → Przenieś standardy projektu → Style wymiarowania.",
+    "en": "Two linear dimension types, each in its own .rvt file. PAAS_Wymiar_Zewnetrzny: ISOCPEUR 4.0 mm, regular digits. PAAS_Wymiar_Wewnetrzny: ISOCPEUR 3.5 mm, bold. Both use an oblique tick, text 1 mm above the line, dimension and witness lines extended by 2 mm, 8 mm chain spacing (standard: at least 7 mm), values in cm. To load: Manage → Transfer Project Standards → Dimension Styles."
+  }
 }

@@ -4,11 +4,15 @@
     "en": "Spot elevation"
   },
   "subtitle": {
-    "pl": "Rzędna punktu",
-    "en": "Spot elevation"
+    "pl": "Symbol rzędnej wewnętrznej",
+    "en": "Interior spot elevation symbol"
   },
   "category": "Opisz",
   "subTags": [
     "Rzędne punktu"
-  ]
+  ],
+  "description": {
+    "pl": "Symbol rzędnej punktu (trójkąt pod linią odniesienia). Wczytaj go do projektu i wybierz jako „Symbol” w typie rzędnej punktu. Ustawienia typu PAAS „Cel (projekt)”: font ISOCPEUR 2,4 mm, pogrubiony, tekst nad linią odniesienia, odsunięcie od linii 5 mm i od symbolu 8 mm, rzędna od punktu bazowego projektu.",
+    "en": "Spot elevation symbol (triangle under the leader). Load it into the project and pick it as the \"Symbol\" of a spot elevation type. PAAS \"Cel (projekt)\" type settings: ISOCPEUR 2.4 mm, bold, text above the leader, 5 mm offset from the leader and 8 mm from the symbol, elevation from the project base point."
+  }
 }
