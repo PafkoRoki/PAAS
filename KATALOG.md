@@ -101,9 +101,34 @@ Nowa podkategoria bez wpisu dostaje ikonę ogólną (mała kostka w sześcianie)
 - **Galeria**: wszystkie inne obrazy, kolejność alfabetyczna (`1.jpg`, `2.jpg`, …).
 - **Do pobrania**: `.rfa .rvt .rte .rft .adsklib .pat .lin .txt .ttf .otf .dwg .zip .pdf`. Każdy plik dostaje własny przycisk z rozmiarem. Bez pliku pokazuje się „PLIK WKRÓTCE”.
 
+## Nazwy plików do pobrania (PAAS)
+
+Pliki, które ktoś pobiera (`.rfa`, `.rvt`, `.pat`, `.lin`, `.adsklib`…), nazywaj według schematu opartego na BS 8541-1:
+
+```
+PAAS_<Typ>_<Opis>[_<Wariant>].<rozszerzenie>
+```
+
+| Pole | Opis | Przykład |
+| --- | --- | --- |
+| `PAAS` | Autor / źródło, zawsze na początku | `PAAS` |
+| `Typ` | Co to jest, zwykle podkategoria w liczbie pojedynczej | `Oznaczenie`, `Sciana`, `Okno`, `Material` |
+| `Opis` | Czego dotyczy albo producent i system | `Drzwi`, `Solbet-Welna`, `Aluprof-MB104` |
+| `Wariant` | Opcjonalnie: wymiar, wersja, odmiana | `90x210`, `Passive` |
+
+Zasady:
+
+- `_` oddziela pola, `-` łączy słowa w jednym polu.
+- Każde słowo zaczyna się wielką literą, bez polskich znaków i spacji.
+- Revit bierze nazwę rodziny z nazwy pliku, więc po wczytaniu w przeglądarce projektu widać `PAAS_…` i od razu wiadomo, skąd jest rodzina.
+
+Przykłady: `PAAS_Oznaczenie_Drzwi.rfa`, `PAAS_Oznaczenie_Okna.rfa`, `PAAS_Sciana_Solbet-Welna.rfa`, `PAAS_Okno_Aluprof-MB104_Passive.rfa`.
+
+Fonty zostawiają swoją oryginalną nazwę (`ISOCPEUR.ttf`), bo system rozpoznaje je po nazwie rodziny fontu.
+
 ## Wskazówki przy dużej bibliotece
 
-- Nazwy folderów i plików: małe litery, bez polskich znaków i spacji (`okno-aluprof-mb104`), bo stają się adresami URL.
+- Nazwy folderów: małe litery, bez polskich znaków i spacji (`okno-aluprof-mb104`), bo stają się adresami URL. Pliki do pobrania nazywaj według schematu PAAS powyżej.
 - Miniatury: ok. 800 px szerokości, `.webp` lub `.jpg` ~80%. Kafelki ładują się leniwie, ale lżejsze pliki to szybsza strona.
 - GitHub: pojedynczy plik max **100 MB**, opublikowana strona (GitHub Pages) max **1 GB**. Przy bardzo dużych rodzinach rozważ `.zip` lub GitHub Releases.
 - Pliki robocze (DWG, backupy, eksporty) trzymaj w `_source/`. Ten folder jest w `.gitignore` i nie trafia na stronę.
