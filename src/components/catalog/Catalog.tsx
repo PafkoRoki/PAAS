@@ -29,7 +29,11 @@ export default function Catalog({ items, title }: CatalogProps) {
   const [selection, setSelection] = useState<Selection>({});
   const [view, setView] = useState<CatalogView>(readView);
   const [ribbonMinimized, setRibbonMinimized] = useState(false);
-  const [activeItem, setActiveItem] = useState<CatalogItem | null>(null);
+  // `?e=<item id>` (used by the static item pages) opens that item directly
+  const [activeItem, setActiveItem] = useState<CatalogItem | null>(() => {
+    const id = new URLSearchParams(window.location.search).get("e");
+    return items.find((item) => item.id === id) ?? null;
+  });
 
   const words = useMemo(() => queryWords(query), [query]);
   const matching = useMemo(
@@ -47,7 +51,21 @@ export default function Catalog({ items, title }: CatalogProps) {
     }
   };
 
-  const closeModal = useCallback(() => setActiveItem(null), []);
+  // keep the open item in the URL so it can be shared; closing removes it
+  const setItemParam = (id: string | null) => {
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("e", id);
+    else url.searchParams.delete("e");
+    window.history.replaceState(null, "", url);
+  };
+  const openItem = useCallback((item: CatalogItem) => {
+    setActiveItem(item);
+    setItemParam(item.id);
+  }, []);
+  const closeModal = useCallback(() => {
+    setActiveItem(null);
+    setItemParam(null);
+  }, []);
 
   return (
     <div className="catalog">
@@ -69,7 +87,7 @@ export default function Catalog({ items, title }: CatalogProps) {
         items={results}
         selection={selection}
         onSelect={setSelection}
-        onOpenItem={setActiveItem}
+        onOpenItem={openItem}
         words={words}
         view={view}
         onClearFilters={() => {

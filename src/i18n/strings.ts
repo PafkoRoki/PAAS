@@ -7,7 +7,7 @@ const plItems = (n: number) => {
 };
 
 const pl = {
-  pageTitle: "P A A S — biblioteki Revit",
+  pageTitle: "PAAS — polskie rodziny, materiały i wzory .pat do Revita",
 
   nav: {
     library: "BIBLIOTEKA",
@@ -63,7 +63,7 @@ const pl = {
 export type Strings = typeof pl;
 
 const en: Strings = {
-  pageTitle: "P A A S — Revit libraries",
+  pageTitle: "PAAS — Polish Revit families, materials and .pat patterns",
 
   nav: {
     library: "LIBRARY",
