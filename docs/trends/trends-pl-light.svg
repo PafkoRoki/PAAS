@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Revit, ArchiCAD i AutoCAD w Google Trends, Polska 2021-2026</title>
+<desc id="d">Srednie miesieczne zainteresowanie wzgledne 0-100. Revit rosnie z ok. 18 w 2022 do ok. 30 w 2025, ArchiCAD stoi na ok. 13, AutoCAD na ok. 60 z wyrazna sezonowoscia.</desc>
+<rect width="960" height="520" rx="12" fill="#fcfcfb"/>
+<text x="56" y="38" font-size="20" font-weight="600" fill="#0b0b0b">Revit w Polsce rośnie: 2× więcej wyszukiwań niż ArchiCAD</text>
+<text x="56" y="62" font-size="13" fill="#52514e">Google Trends, Polska, listopad 2021 – listopad 2026 · zainteresowanie względne (0–100), średnia miesięczna</text>
+<rect x="139.1" y="92" width="25.6" height="372" fill="#f1f0ec"/>
+<rect x="292.4" y="92" width="25.6" height="372" fill="#f1f0ec"/>
+<rect x="445.8" y="92" width="25.6" height="372" fill="#f1f0ec"/>
+<rect x="599.1" y="92" width="25.6" height="372" fill="#f1f0ec"/>
+<rect x="752.5" y="92" width="25.6" height="372" fill="#f1f0ec"/>
+<line x1="56" x2="810" y1="464.0" y2="464.0" stroke="#b9b8b2" stroke-width="1"/>
+<text x="46" y="468.0" font-size="12" fill="#52514e" text-anchor="end">0</text>
+<line x1="56" x2="810" y1="371.0" y2="371.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="46" y="375.0" font-size="12" fill="#52514e" text-anchor="end">25</text>
+<line x1="56" x2="810" y1="278.0" y2="278.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="46" y="282.0" font-size="12" fill="#52514e" text-anchor="end">50</text>
+<line x1="56" x2="810" y1="185.0" y2="185.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="46" y="189.0" font-size="12" fill="#52514e" text-anchor="end">75</text>
+<line x1="56" x2="810" y1="92.0" y2="92.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="46" y="96.0" font-size="12" fill="#52514e" text-anchor="end">100</text>
+<line x1="68.8" x2="68.8" y1="464" y2="469" stroke="#b9b8b2"/>
+<text x="68.8" y="486" font-size="12" fill="#52514e" text-anchor="middle">2022</text>
+<line x1="222.1" x2="222.1" y1="464" y2="469" stroke="#b9b8b2"/>
+<text x="222.1" y="486" font-size="12" fill="#52514e" text-anchor="middle">2023</text>
+<line x1="375.5" x2="375.5" y1="464" y2="469" stroke="#b9b8b2"/>
+<text x="375.5" y="486" font-size="12" fill="#52514e" text-anchor="middle">2024</text>
+<line x1="528.8" x2="528.8" y1="464" y2="469" stroke="#b9b8b2"/>
+<text x="528.8" y="486" font-size="12" fill="#52514e" text-anchor="middle">2025</text>
+<line x1="682.2" x2="682.2" y1="464" y2="469" stroke="#b9b8b2"/>
+<text x="682.2" y="486" font-size="12" fill="#52514e" text-anchor="middle">2026</text>
+<text x="611.9" y="108" font-size="11" fill="#52514e" text-anchor="middle">wakacje (lip–sie)</text>
+<polyline points="56.0,251.0 68.8,158.2 81.6,232.4 94.3,185.9 107.1,229.6 119.9,222.9 132.7,246.4 145.5,291.4 158.2,316.1 171.0,290.1 183.8,222.2 196.6,213.8 209.4,259.4 222.1,194.7 234.9,259.4 247.7,215.7 260.5,263.9 273.3,235.2 286.0,244.5 298.8,301.1 311.6,314.3 324.4,299.4 337.2,232.6 349.9,225.0 362.7,262.4 375.5,179.4 388.3,241.7 401.1,218.5 413.8,237.1 426.6,225.0 439.4,237.1 452.2,305.0 464.9,305.0 477.7,275.0 490.5,198.9 503.3,174.8 516.1,225.9 528.8,141.3 541.6,224.1 554.4,186.5 567.2,254.8 580.0,212.0 592.7,239.3 605.5,296.6 618.3,301.8 631.1,278.0 643.9,191.5 656.6,196.2 669.4,265.9 682.2,176.6 695.0,263.1 707.8,223.7 720.5,241.7 733.3,242.3 746.1,272.4 758.9,319.9 771.7,336.0 784.4,304.0 797.2,217.6 810.0,229.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="56.0,425.9 68.8,411.9 81.6,422.1 94.3,419.4 107.1,416.6 119.9,407.5 132.7,411.0 145.5,432.0 158.2,433.3 171.0,430.5 183.8,419.4 196.6,411.9 209.4,420.3 222.1,407.5 234.9,423.1 247.7,416.6 260.5,418.6 273.3,411.9 286.0,409.1 298.8,431.3 311.6,432.4 324.4,432.4 337.2,416.4 349.9,409.1 362.7,421.6 375.5,401.7 388.3,415.6 401.1,411.9 413.8,409.1 426.6,395.2 439.4,402.2 452.2,422.1 464.9,424.9 477.7,417.9 490.5,404.5 503.3,398.0 516.1,414.9 528.8,389.6 541.6,408.2 554.4,404.5 567.2,409.1 580.0,397.0 592.7,406.7 605.5,426.8 618.3,423.1 631.1,421.2 643.9,410.1 656.6,405.2 669.4,417.5 682.2,396.1 695.0,415.6 707.8,411.9 720.5,417.5 733.3,405.2 746.1,417.5 758.9,431.4 771.7,432.8 784.4,430.5 797.2,421.2 810.0,419.4" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="56.0,408.2 68.8,385.9 81.6,390.5 94.3,387.7 107.1,384.0 119.9,391.1 132.7,385.9 145.5,396.3 158.2,402.6 171.0,402.6 183.8,396.3 196.6,399.8 209.4,407.3 222.1,382.2 234.9,385.9 247.7,384.9 260.5,385.9 273.3,378.4 286.0,382.2 298.8,387.4 311.6,398.0 324.4,394.2 337.2,390.3 349.9,386.8 362.7,392.6 375.5,371.0 388.3,371.9 401.1,356.9 413.8,360.8 426.6,362.6 439.4,361.3 452.2,375.6 464.9,384.0 477.7,377.7 490.5,364.5 503.3,354.3 516.1,380.7 528.8,349.6 541.6,356.1 554.4,347.2 567.2,358.0 580.0,346.8 592.7,357.6 605.5,370.1 618.3,375.5 631.1,379.4 643.9,367.3 656.6,353.9 669.4,382.2 682.2,353.3 695.0,360.8 707.8,342.0 720.5,353.3 733.3,340.5 746.1,367.3 758.9,383.1 771.7,384.4 784.4,382.2 797.2,378.4 810.0,382.2" fill="none" stroke="#2a78d6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="810.0" cy="382.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="824.0" y="380.2" font-size="14" font-weight="600" fill="#0b0b0b">Revit</text>
+<text x="824.0" y="396.2" font-size="12" fill="#52514e">śr. 12 mies.: 26</text>
+<circle cx="810.0" cy="419.4" r="5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<text x="824.0" y="417.4" font-size="14" font-weight="600" fill="#0b0b0b">ArchiCAD</text>
+<text x="824.0" y="433.4" font-size="12" fill="#52514e">śr. 12 mies.: 12</text>
+<circle cx="810.0" cy="229.6" r="5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"/>
+<text x="824.0" y="227.6" font-size="14" font-weight="600" fill="#0b0b0b">AutoCAD</text>
+<text x="824.0" y="243.6" font-size="12" fill="#52514e">śr. 12 mies.: 55</text>
+<line x1="56" x2="74" y1="80" y2="80" stroke="#2a78d6" stroke-width="3" stroke-linecap="round"/>
+<text x="80" y="84" font-size="12" fill="#0b0b0b">Revit</text>
+<line x1="166" x2="184" y1="80" y2="80" stroke="#eb6834" stroke-width="3" stroke-linecap="round"/>
+<text x="190" y="84" font-size="12" fill="#0b0b0b">ArchiCAD</text>
+<line x1="276" x2="294" y1="80" y2="80" stroke="#1baf7a" stroke-width="3" stroke-linecap="round"/>
+<text x="300" y="84" font-size="12" fill="#0b0b0b">AutoCAD</text>
+<text x="56" y="506" font-size="11" fill="#52514e">Źródło: Google Trends (dane tygodniowe uśrednione do miesięcy). „revit” obejmuje też markę odzieży motocyklowej REV’IT!.</text>
+</svg>
